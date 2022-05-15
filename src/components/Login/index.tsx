@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ButtonStyled, CardtStyled, ContainerStyled, ErrorStyled, InputStyled } from "./Styled.button";
+import { ButtonStyled, CardtStyled, ContainerStyled, ErrorStyled, InputStyled, TitleStyled } from "./Styled.button";
 import Axios from "axios";
 
 const Login = () => {
@@ -14,9 +14,10 @@ const Login = () => {
   }
 
   const fetchData = async (user: string) => {
+      debugger
     try {
       const { data } = await Axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
+        process.env.REACT_APP_API + "login",
         {
           params: {
             user
@@ -34,6 +35,7 @@ const Login = () => {
   return (
     <ContainerStyled>
         <CardtStyled>
+            <TitleStyled>Sport Lima Center</TitleStyled>
            <InputStyled className={isError ? 'error' : ''} placeholder="Ingresar usuario" onChange={(e) => setUser(e.currentTarget.value)}/>
            { isError && <ErrorStyled>Usuario incorrecto.</ErrorStyled> }
            <ButtonStyled onClick={() => handleLogin()}>Iniciar sesion </ButtonStyled>

@@ -10,6 +10,9 @@ export const ContainerStyled = styled.div`
     align-items: center;
     background-image: url(https://www.storefutbol.com/co/wp-content/uploads/2020/02/futbol-soccer.jpg);
     background-size: contain;
+    @media(min-width: 900px) {
+        background-size: 100%;
+    }
   }
 `;
 
@@ -62,4 +65,14 @@ export const ErrorStyled = styled.div`
     position: relative;
     top: 1rem;
     font-weight: 700;
+`;
+
+export const TitleStyled = styled.div`
+  && {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: "Helvetica";
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    color: #1877f2;
 `;

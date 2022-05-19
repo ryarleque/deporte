@@ -1,27 +1,15 @@
-import { Instagram } from "react-bootstrap-icons";
 import Carousel from "react-bootstrap/esm/Carousel";
+import { useNavigate } from "react-router-dom";
+import CustomFooter from "../CustomFooter";
+import CustomHeader from "../CustomHeader";
 import { ButtonHeaderStyled,Button2HeaderStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled } from "./Styled.Home";
 
 const Home = () => {
-
+    const navigate = useNavigate();
 
     return (
        <HomeContentStyled>
-           <HeadertStyled>
-               <LeftHeadertStyled>
-                    <LogoHeadertStyled src={require("../../Assets/logo.png")} alt="logo"/>
-                    <TitleHeaderStyled>SPORT LIMA CENTER</TitleHeaderStyled>
-               </LeftHeadertStyled>
-               <RighttHeadertStyled>
-                   <ItemHeaderStyled>HOME</ItemHeaderStyled>
-                   <ItemHeaderStyled>SEDES</ItemHeaderStyled>
-                   <ItemHeaderStyled>TORNEOS</ItemHeaderStyled>
-                   <ItemLastHeaderStyled>CONTACTO</ItemLastHeaderStyled>
-                   <ButtonHeaderStyled>LOGIN</ButtonHeaderStyled>
-                   <Button2HeaderStyled>REGISTRATE</Button2HeaderStyled>
-               </RighttHeadertStyled>
-           </HeadertStyled>
-
+            <CustomHeader/>
             <ContentCarouselStyled>
                 <CarouselStyled indicators={false} interval={900} controls={false}>
                     <Carousel.Item>
@@ -62,13 +50,7 @@ const Home = () => {
                 <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
             </ContentWhatsappStyled>
 
-           <FooterContentStyled>
-               <SocialContentStyled>
-                   <FacebbokContentStyled/>
-                   <Instagram/>
-               </SocialContentStyled>
-              <div>SPORT LIMA CENTER © 2022</div> 
-           </FooterContentStyled>
+           <CustomFooter/>
        </HomeContentStyled>
     );
 }

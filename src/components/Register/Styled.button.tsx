@@ -30,6 +30,24 @@ export const CardtStyled = styled.div`
   }
 `;
 
+export const CardPlantStyled = styled.div`    
+  && {
+    padding: 3rem;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 12px 20px 13px 0px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    max-width: 700px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+`;
+
 export const InputStyled = styled.input`
   && {
     border: 2px solid #dddfe2;
@@ -98,3 +116,89 @@ export const CardContainerStyled = styled.div`
     background-color: #eeeeee;
   }
 `;
+
+export const PlanCardStyled = styled.div`
+  && {
+    display: flex;
+    padding: 1.5rem 1rem;
+    border-radius: 0.5rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    color: black;
+    background: white;
+    border: 2px solid #e1e1e1;
+    @media(max-width: 599px) {
+      flex-direction: column;
+    }    
+    &.selected {
+      color: white;
+      background: black;
+    }
+    &:hover {
+      color: white;
+      background: #5b5a5a8c;
+    }
+  }
+`;
+
+export const PlanCardItemStyled = styled.div`
+  && {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    @media(max-width: 599px) {
+      font-size: 1.25rem;
+    }
+  }
+`;
+
+export const PlanCardListStyled = styled.div`
+  && {
+    text-align: center;
+    @media(max-width: 599px) {
+      margin-top: 0.5rem;
+    }
+    .item {
+      color: gray;
+      line-height: 2rem;
+    }
+  }
+`;
+
+
+export const PlanCardPricetStyled = styled.div`
+  && {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 800;
+    align-items: unset;
+    @media(max-width: 599px) {
+      margin-top: 2rem;
+    }
+    .principal {
+      font-size: 2.25rem;
+      line-height: 2rem;
+      letter-spacing: 1px;
+      margin-left: 0.25rem;
+    }
+  }
+`;
+
+export const PlanCardInfotStyled = styled.div`
+  && {
+    color: black;
+    margin-bottom: 1rem;
+    .type1 {
+      FONT-WEIGHT: 900;
+      PADDING: 0.25rem;
+      COLOR: #f7b643;
+    }
+    .type2 {
+      FONT-WEIGHT: 900;
+      PADDING: 0.25rem;
+      COLOR: RED;
+    }
+  }
+`;
+

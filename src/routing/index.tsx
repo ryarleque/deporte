@@ -5,6 +5,7 @@ import CreateUser from "../components/CreateUser";
 import DetalleRendimiento from "../components/DetalleRendimiento";
 import Home from "../components/Home";
 import Login from "../components/Login";
+import Register from "../components/Register";
 import Rendimiento from "../components/Rendimiento";
 import Reporte from "../components/Reporte";
 import Tests from "../components/Tests";
@@ -18,6 +19,7 @@ function Routing() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/registrar" element={<Register />}/>
 
           <Route path="/costos" element={<Costos />} />
           <Route path="/create-user" element={<CreateUser />} />

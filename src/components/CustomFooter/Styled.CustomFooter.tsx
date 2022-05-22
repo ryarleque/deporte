@@ -10,6 +10,8 @@ export const FooterContentStyled = styled.div`
     border-top: 1px solid #7a7a7a;
     padding: 2rem 0;
     line-height: 2rem;
+    background: black;
+    color: white;
   }
 `;
 

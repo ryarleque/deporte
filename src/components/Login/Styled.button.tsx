@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
   && {
-    background: black;
     color: white;
     font-family: 'Signika',sans-serif;
     font-size: 15px;
-    height: 100vh;
+    background-color: #eeeeee;
   }
 `;
 
@@ -86,14 +85,15 @@ export const TitleStyled = styled.div`
     margin-bottom: 2rem;
     letter-spacing: 0.5px;
     color: black;
+    text-align: center;
   }
 `;
 
 export const CardContainerStyled = styled.div`
   && {
-    padding: 0;
+    padding: 6rem 1rem;
     @media(min-width: 600px) {
-      padding: 6rem;
+      padding: 10rem 0;
     }
     background-color: #eeeeee;
   }

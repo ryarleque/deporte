@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
   && {
-    background: black;
+    background-color: #eeeeee;
     color: white;
     font-family: 'Signika',sans-serif;
     font-size: 15px;
-    height: 100vh;
   }
 `;
 
@@ -109,7 +108,7 @@ export const TitleStyled = styled.div`
 
 export const CardContainerStyled = styled.div`
   && {
-    padding: 0;
+    padding: 1rem;
     @media(min-width: 600px) {
       padding: 6rem;
     }
@@ -125,10 +124,11 @@ export const PlanCardStyled = styled.div`
     align-items: center;
     width: 100%;
     justify-content: space-around;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    min-height: 9rem;
     color: black;
     background: white;
-    border: 2px solid #e1e1e1;
+    box-shadow: 2px 4px 8px 0px #4b4b8b3b, 0 8px 16px rgb(0 0 0 / 10%);
     @media(max-width: 599px) {
       flex-direction: column;
     }    
@@ -138,7 +138,7 @@ export const PlanCardStyled = styled.div`
     }
     &:hover {
       color: white;
-      background: #5b5a5a8c;
+      background: black;
     }
   }
 `;

@@ -1,11 +1,20 @@
 import Carousel from "react-bootstrap/esm/Carousel";
 import { useNavigate } from "react-router-dom";
-import CustomFooter from "../CustomFooter";
 import CustomHeader from "../CustomHeader";
-import { ButtonHeaderStyled,Button2HeaderStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled } from "./Styled.Home";
+import { ButtonHeaderStyled,Button2HeaderStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled, BeneficiosCardContainerStyled, BeneficiosCardStyled, BeneficiosCardTittleStyled, BeneficiosContentStyled, BeneficiosStyled, BeneficiosTittleStyled, SociosContentInnerStyled, SociosContentStyled, SociosListStyled, SociosTitleStyled, CardHomeContentPlantStyled, CardHomePlantStyled, PromoTittleStyled } from "./Styled.Home";
+import { ButtonStyled } from "../Login/Styled.button";
+import { CardPlantStyled, PlanCardInfotStyled, PlanCardStyled, PlanCardItemStyled, PlanCardListStyled, PlanCardPricetStyled } from "../Register/Styled.button";
+import { useState } from "react";
 
 const Home = () => {
     const navigate = useNavigate();
+    const planList = [
+        {id:0, name: 'PROMO PENSÁ', suscription: '12 meses', free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
+        {id:1, name: 'PROMO LAPADULA', suscription: '5 meses', free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
+        {id:2, name: 'PROMO CUEVITA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+      ];
+
+      const [selectedPlan] = useState('PROMO PENSÁ')
 
     return (
        <HomeContentStyled>
@@ -15,21 +24,21 @@ const Home = () => {
                     <Carousel.Item>
                         <ImageCarouselStyled
                         className="d-block w-100"
-                        src="https://i.pinimg.com/originals/c8/ff/8f/c8ff8f7ef3667ecea4c5628e6487950f.jpg"
+                        src="https://media.gettyimages.com/photos/footballer-keeping-ball-up-picture-id102069425?s=612x612"
                         alt="First slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <ImageCarouselStyled
                         className="d-block w-100"
-                        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e774d1ed-4d27-4f4f-8873-a5cc4fcb2408/dch12o1-06b0574e-127d-4101-b6b7-103012e34a8d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2U3NzRkMWVkLTRkMjctNGY0Zi04ODczLWE1Y2M0ZmNiMjQwOFwvZGNoMTJvMS0wNmIwNTc0ZS0xMjdkLTQxMDEtYjZiNy0xMDMwMTJlMzRhOGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.RYUEAm5WfWC-Y8dtf9WYFwyCzAbTTQobEOUXDX5IZpE"
+                        src="https://media.gettyimages.com/photos/soccer-player-dressed-in-black-running-with-ball-at-night-picture-id1190197787?s=612x612"
                         alt="Second slide"
                         />
                     </Carousel.Item>
                 </CarouselStyled>
 
                 <TitleCarouselStyled>
-                    <ButtonHeaderStyled>UNETE</ButtonHeaderStyled>
+                    <ButtonHeaderStyled onClick={()=> navigate('/registrar')}>ÚNETE</ButtonHeaderStyled>
                     <PromotionContentColorStyled>
                         <PromotionColorStyled>#</PromotionColorStyled>
                         <span>SPORT</span>
@@ -40,17 +49,83 @@ const Home = () => {
             </ContentCarouselStyled>
 
             <ContentStyled>
-                <TitleStyled>Lorem Ipsum is simply dummy text</TitleStyled>
-
-                <div>Lorem Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</div>
+                <TitleStyled>Centro deportivo tecnólogico para adultos </TitleStyled>
             </ContentStyled>
 
+            <BeneficiosStyled>
+                <BeneficiosContentStyled>
+                    <BeneficiosTittleStyled>BENEFICIOS</BeneficiosTittleStyled>
+                    <BeneficiosCardContainerStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Acceso a</div><div>la App</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Registro de</div><div>Progresos</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                    </BeneficiosCardContainerStyled>
+                    <BeneficiosCardContainerStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Tests</div><div>Mensuales</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Entrenamientos</div><div>Funcionales</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                    </BeneficiosCardContainerStyled>
+                    <BeneficiosCardContainerStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Reportes</div><div>Detallados</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Plan</div><div>Nutricional</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                    </BeneficiosCardContainerStyled>
+                </BeneficiosContentStyled>
+            </BeneficiosStyled>
+
+            <SociosContentStyled>
+                <SociosContentInnerStyled>
+                    <SociosTitleStyled>Socios</SociosTitleStyled>
+                    <SociosListStyled>
+                        <div>JOGO</div>
+                        <div>CARDELAGO ARQUITECTOS</div>
+                        <div>TORNEO</div>
+                        <div>WePay4U</div>
+                    </SociosListStyled>
+                </SociosContentInnerStyled>
+            </SociosContentStyled>
+
+            <CardHomeContentPlantStyled>
+                <CardHomePlantStyled>
+                    <PromoTittleStyled>Promociones</PromoTittleStyled>
+                    <PlanCardInfotStyled>Recuerda que <span className="type1">SOLO PAGARÁS EL MONTO DE LA PROMO INDICADO</span> al inicio de cada mes, <span className="type2">NO PAGARÁS TODO DE UNA!!</span> </PlanCardInfotStyled>
+                    <br/>
+                    { planList.map((item: any) => (
+                    <PlanCardStyled className={item.name === selectedPlan ? 'selected' : ''}>
+                        <PlanCardItemStyled >{item.name}</PlanCardItemStyled>
+                        <PlanCardListStyled>
+                        <div className="item">Suscripción</div>
+                        <div>{item.suscription}</div>
+                        </PlanCardListStyled>
+                        <PlanCardListStyled>
+                        <div className="item">Incluye</div>
+                        {item.free.map((detail: any) => (
+                            <div>{detail.value}</div>
+                        ))}
+                        </PlanCardListStyled>
+                        <PlanCardPricetStyled>
+                        <div>S/</div>
+                        <div className="principal">{item.price},</div>
+                        <div>{item.decimalPrice}</div>
+                        </PlanCardPricetStyled>
+                    </PlanCardStyled>
+                    ))}
+                </CardHomePlantStyled>
+            </CardHomeContentPlantStyled>
 
            <ContentWhatsappStyled>
                 <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
             </ContentWhatsappStyled>
 
-           <CustomFooter/>
        </HomeContentStyled>
     );
 }

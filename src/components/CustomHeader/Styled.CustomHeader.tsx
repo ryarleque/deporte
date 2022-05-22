@@ -3,11 +3,18 @@ import styled from "styled-components";
 export const HeadertStyled = styled.div`    
   && {
     padding: 1rem;
+    background: black;
+   
+  }
+`;
+
+export const HeadertInnerContentStyled = styled.div`    
+  && {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 `;
 
@@ -15,6 +22,7 @@ export const LeftHeadertStyled = styled.div`
   && {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 `;
 

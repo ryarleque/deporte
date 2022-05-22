@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Asistencia from "../components/Asistencia";
 import Costos from "../components/Costos";
 import CreateUser from "../components/CreateUser";
+import CustomFooter from "../components/CustomFooter";
 import DetalleRendimiento from "../components/DetalleRendimiento";
 import Home from "../components/Home";
 import Login from "../components/Login";
@@ -15,6 +16,7 @@ const isLogged = false
 
 function Routing() {
     return (
+      <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
@@ -34,6 +36,8 @@ function Routing() {
           <Route path="/detalle-rendimiento" element={<DetalleRendimiento />} />
         </Routes>
       </BrowserRouter>
+      <CustomFooter/>
+      </>
     );
   }
   

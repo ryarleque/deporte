@@ -4,11 +4,10 @@ import { Facebook, Whatsapp } from "react-bootstrap-icons";
 
 export const HomeContentStyled = styled.div`    
   && {
-    background: black;
+    background-color: black;
     color: white;
     font-family: 'Signika',sans-serif;
     font-size: 15px;
-    height: 100vh;
   }
 `;
 
@@ -18,7 +17,7 @@ export const HeadertStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 `;
@@ -150,7 +149,10 @@ export const TitleCarouselStyled = styled.div`
 
 export const ImageCarouselStyled = styled.img`    
   && {
-    height: 25rem;
+    height: 55vh;
+    @media(min-width: 600px) {
+      height: 62vh;
+    }
   }
 `;
 
@@ -173,7 +175,7 @@ export const PromotionContentColorStyled = styled.div`
 export const PromotionColorStyled = styled.div`    
   && {
     color: #f7b643;
-  }
+  } 
 `;
 
 export const FooterContentStyled = styled.div`    
@@ -224,9 +226,9 @@ export const ContentWhatsappStyled = styled.div`
 
 export const ContentStyled = styled.div`    
   && {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    margin-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 `;
 
@@ -236,5 +238,137 @@ export const TitleStyled = styled.div`
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+`;
+
+export const BeneficiosStyled = styled.div`    
+  && {
+    background: white;
+    color: black;
+    padding: 2rem;
+  }
+`;
+
+export const BeneficiosContentStyled = styled.div`    
+  && {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+`;
+
+export const BeneficiosTittleStyled = styled.div`    
+  && {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+  }
+`;
+
+export const PromoTittleStyled = styled.div`    
+  && {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    color: black;
+  }
+`;
+
+export const BeneficiosCardContainerStyled = styled.div`    
+  && {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 0rem;
+    flex-direction: column;
+    @media(min-width: 600px) {
+      flex-direction: row;
+      margin-bottom: 5rem;
+    }
+    
+
+  }
+`;
+
+export const BeneficiosCardStyled = styled.div`    
+  && {
+    background: #f7b643;
+    color:black;
+    font-family: 'Signika', sans-serif;
+    padding: 3rem 0rem;
+    width: 13rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    @media(min-width: 600px) {
+      margin-bottom: 0;
+    }    
+    box-shadow: 5px 4px 13px 0px rgb(58 52 52 / 65%), 0 8px 16px rgb(0 0 0 / 10%);
+    :hover {
+      color: white;
+      background: #a21503;
+      transition:all 0.25s ease-in-out;
+    }
+  }
+`;
+
+export const BeneficiosCardTittleStyled = styled.div`    
+  && {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+`;
+
+
+
+
+export const SociosContentStyled = styled.div`    
+  && {
+    background: black;
+    color: white;
+    padding: 2rem;
+  }
+`;
+
+export const SociosContentInnerStyled = styled.div`    
+  && {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+`;
+
+export const SociosTitleStyled = styled.div`    
+  && {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+  }
+`;
+
+export const SociosListStyled = styled.div`    
+  && {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
+export const CardHomeContentPlantStyled = styled.div`    
+  && {
+    background: #f7b643;
+    padding: 4rem 0;
+  }
+`;
+
+export const CardHomePlantStyled = styled.div`    
+  && {
+    padding: 0;
+    background: #f7b643;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 0 auto;
   }
 `;

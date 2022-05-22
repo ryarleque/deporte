@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { ButtonStyled, CardContainerStyled, CardtStyled, ContainerStyled, ErrorStyled, InputStyled, TitleStyled } from "./Styled.button";
 import Axios from "axios";
 import CustomHeader from "../CustomHeader";
-import CustomFooter from "../CustomFooter";
-import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";;
+import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";import Spinner from "../Spinner";
+;
 
 const Register = () => {
 
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const [isError, setError] = useState(false)
+  const [isLoading, setLoading] = useState(false)
   
   const handleLogin = () => {
     console.log(user)
@@ -20,6 +21,7 @@ const Register = () => {
 
   const fetchData = async (user: string, password: string) => {
     try {
+      setLoading(true)
       const { data } = await Axios.post(
         process.env.REACT_APP_API + "users/login",
         {
@@ -28,7 +30,9 @@ const Register = () => {
       );
       console.log(data);
       setError(false)
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       setError(true)
       console.log(error)
     }
@@ -37,7 +41,7 @@ const Register = () => {
   return (
     <ContainerStyled>
         <CustomHeader/>
-
+        { isLoading && <Spinner /> }
         <CardContainerStyled>
             <CardtStyled>
                 <TitleStyled>Ingresar credenciales</TitleStyled>
@@ -52,7 +56,7 @@ const Register = () => {
             <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
         </ContentWhatsappStyled>
 
-        <CustomFooter/>
+        {/* <CustomFooter/> */}
     </ContainerStyled>
   );
 }

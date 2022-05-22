@@ -3,8 +3,9 @@ import { useState } from "react";
 import { ButtonStyled, CardContainerStyled, CardPlantStyled, CardtStyled, ContainerStyled, ErrorStyled, InputStyled, PlanCardInfotStyled, PlanCardItemStyled, PlanCardListStyled, PlanCardPricetStyled, PlanCardStyled, TitleStyled } from "./Styled.button";
 import Axios from "axios";
 import CustomHeader from "../CustomHeader";
-import CustomFooter from "../CustomFooter";
-import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";;
+import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";
+import Spinner from "../Spinner/index";
+;
 
 const Login = () => {
 
@@ -17,6 +18,9 @@ const Login = () => {
   const [phone, setPhone] = useState(0);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [codigoReferido, setCodigoReferido] = useState('');
+  const planBase = 300
+  const [isLoading, setLoading] = useState(false)
   
   const handleNextStepRegister = () => {
     setSelectedForm(true)
@@ -31,7 +35,7 @@ const Login = () => {
 
   }
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     fetchData()
   }
 
@@ -61,7 +65,20 @@ const Login = () => {
     return password.trim() !== ''
   }
 
+  const getInfoPlan = () => {
+    const info = { id: 0, description: '', value: 0, unit: 'S/.' }
+    const planList3 = planList.find((item:any) => item.name === selectedPlan)
+    return {
+      ...info,
+      id:planList3?.id,
+      description: planList3?.name,
+      value: Math.round(planBase - Number(planList3?.price + '.' + planList3?.decimalPrice))
+    }
+  }
+
   const fetchData = async () => {
+    setLoading(true)
+    const getInfoSelectedPlan = getInfoPlan()
     try {
       const { data } = await Axios.post(
         process.env.REACT_APP_API + "users/register",
@@ -73,29 +90,32 @@ const Login = () => {
             phone: String(phone),
             password,
             email,
-            branchId: 1,
+            branchId: getInfoSelectedPlan.id,
             promo: {
-              description: 'Descuento nuevo alumno',
-              value: 80,
+              description: getInfoSelectedPlan.description,
+              value: getInfoSelectedPlan.value,
               unit: 'S/.'
-            }
+            },
+            codigoReferido
         }
       );
       console.log(data);
       setError(false)
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       setError(true)
       console.log(error)
     }
   };
   
   const planList = [
-    {name: 'PROMO PENSA', suscription: '12 meses', free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
-    {name: 'PROMO LAPADULA', suscription: '5 meses', free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
-    {name: 'PROMO CUEVITA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+    {id:0, name: 'PROMO PENSÁ', suscription: '12 meses', free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
+    {id:1, name: 'PROMO LAPADULA', suscription: '5 meses', free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
+    {id:2, name: 'PROMO CUEVITA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
   ];
 
-  const [selectedPlan, setSelectedPlan] = useState('PROMO PENSA')
+  const [selectedPlan, setSelectedPlan] = useState('PROMO PENSÁ')
 
   const handleItemSelection = (item: string) => {
     setSelectedPlan(item)
@@ -103,12 +123,13 @@ const Login = () => {
 
   const handleSetCard = () => {
     //call pasarela de pagos service
+    handleRegister()
   }
 
   return (
     <ContainerStyled>
         <CustomHeader/>
-
+        { isLoading && <Spinner /> }
         <CardContainerStyled>
           { !isSecondSectionVisible ? 
           <CardtStyled>
@@ -119,19 +140,21 @@ const Login = () => {
             <InputStyled type='password' className={isSelectedForm && !isValidPassword ? 'error' : '' } placeholder='Crear constrasena' onChange={(e) => setPassword(e.target.value)}/>
             <InputStyled type='number' pattern="\d*" maxLength={9} className={isSelectedForm && !isValidPhone() ? 'error' : '' } placeholder='Ingresar celular' onChange={(e) => setPhone(Number(e.target.value))}/>
             <InputStyled type='text' className={isSelectedForm && !isValidEmail() ? 'error' : '' } placeholder='Ingresar email' onChange={(e) => setEmail(e.target.value)}/>
+            <InputStyled type='number' pattern="\d*" max={8} placeholder="Codigo de referido" onChange={(e)=> setCodigoReferido(e.target.value)}/>
             { isError && <ErrorStyled>Actualizar datos</ErrorStyled> }
             <ButtonStyled onClick={() => handleNextStepRegister()}>CONTINUAR</ButtonStyled>
           </CardtStyled>
           : (
           <CardPlantStyled>
             <TitleStyled>Elige tu promo</TitleStyled>
-            <PlanCardInfotStyled>!Aprovecha nuestras ofertas! que incluyen <span>acceso a la APP, plan nutricional, test de evaluacion semanal y mensual</span></PlanCardInfotStyled>
-            <PlanCardInfotStyled>Recuerda que <span className="type1">SOLO PAGARAS EL MONTO DE LA PROMO INDICADO</span> al inicio de cada mes, <span className="type2">NO PAGARAS TODO DE UNA!!</span> </PlanCardInfotStyled>
+            <PlanCardInfotStyled>!Aprovecha nuestras ofertas! que incluyen <span>acceso a la APP, plan nutricional, test de evaluación semanal y mensual</span></PlanCardInfotStyled>
+            <PlanCardInfotStyled>Recuerda que <span className="type1">SOLO PAGARÁS EL MONTO DE LA PROMO INDICADO</span> al inicio de cada mes, <span className="type2">NO PAGARÁS TODO DE UNA!!</span> </PlanCardInfotStyled>
+            <br/>
             { planList.map((item: any) => (
               <PlanCardStyled className={item.name === selectedPlan ? 'selected' : ''} onClick={()=>handleItemSelection(item.name)}>
                 <PlanCardItemStyled >{item.name}</PlanCardItemStyled>
                 <PlanCardListStyled>
-                  <div className="item">Suscripcion</div>
+                  <div className="item">Suscripción</div>
                   <div>{item.suscription}</div>
                 </PlanCardListStyled>
                 <PlanCardListStyled>
@@ -156,8 +179,6 @@ const Login = () => {
         <ContentWhatsappStyled>
             <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
         </ContentWhatsappStyled>
-
-        <CustomFooter/>
     </ContainerStyled>
   );
 }

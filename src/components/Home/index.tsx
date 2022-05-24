@@ -1,9 +1,9 @@
 import Carousel from "react-bootstrap/esm/Carousel";
 import { useNavigate } from "react-router-dom";
 import CustomHeader from "../CustomHeader";
-import { ButtonHeaderStyled,Button2HeaderStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled, BeneficiosCardContainerStyled, BeneficiosCardStyled, BeneficiosCardTittleStyled, BeneficiosContentStyled, BeneficiosStyled, BeneficiosTittleStyled, SociosContentInnerStyled, SociosContentStyled, SociosListStyled, SociosTitleStyled, CardHomeContentPlantStyled, CardHomePlantStyled, PromoTittleStyled } from "./Styled.Home";
+import { ButtonHeaderStyled,Button2HeaderStyled, PlanCardInfotStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled, BeneficiosCardContainerStyled, BeneficiosCardStyled, BeneficiosCardTittleStyled, BeneficiosContentStyled, BeneficiosStyled, BeneficiosTittleStyled, SociosContentInnerStyled, SociosContentStyled, SociosListStyled, SociosTitleStyled, CardHomeContentPlantStyled, CardHomePlantStyled, PromoTittleStyled } from "./Styled.Home";
 import { ButtonStyled } from "../Login/Styled.button";
-import { CardPlantStyled, PlanCardInfotStyled, PlanCardStyled, PlanCardItemStyled, PlanCardListStyled, PlanCardPricetStyled } from "../Register/Styled.button";
+import { CardPlantStyled, PlanCardStyled, PlanCardItemStyled, PlanCardListStyled, PlanCardPricetStyled } from "../Register/Styled.button";
 import { useState } from "react";
 
 const Home = () => {

@@ -27,11 +27,11 @@ function Routing() {
           <Route path="/create-user" element={<CreateUser />} />
           <Route path="/reporte" element={<Reporte />} />
 
-          <Route path="/tomar-asistencia" element={<TomarAsistencia />} />
+          <Route path="/tomar-asistencia" element={<Asistencia />} />
           <Route path="/tests" element={<Tests />} />
 
           <Route path="/datos" element={<UserInfo />} />
-          <Route path="/asistencia" element={<Asistencia />} />
+          <Route path="/asistencia" element={<TomarAsistencia />} />
           <Route path="/rendimiento" element={<Rendimiento />} />
           <Route path="/detalle-rendimiento" element={<DetalleRendimiento />} />
         </Routes>

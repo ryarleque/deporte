@@ -54,6 +54,7 @@ export const TitleHeaderStyled = styled.div`
     line-height: 1.5rem;
     font-family: sans-serif;
     width: 10rem;
+    color:white;
   }
 `;
 
@@ -348,6 +349,10 @@ export const SociosListStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
+    @media(min-width: 600px) {
+      flex-direction: row;
+    }
   }
 `;
 
@@ -370,5 +375,23 @@ export const CardHomePlantStyled = styled.div`
     border-radius: 8px;
     max-width: 700px;
     margin: 0 auto;
+  }
+`;
+
+export const PlanCardInfotStyled = styled.div`
+  && {
+    color: black;
+    margin-bottom: 1.05rem;
+    font-size: 1rem;
+    .type1 {
+      FONT-WEIGHT: 900;
+      PADDING: 0.25rem;
+      COLOR: white;
+    }
+    .type2 {
+      FONT-WEIGHT: 900;
+      PADDING: 0.25rem;
+      COLOR: RED;
+    }
   }
 `;

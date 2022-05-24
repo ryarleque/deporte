@@ -3,7 +3,7 @@ import { TitleHeaderStyled, ItemHeaderStyled, ItemLastHeaderStyled, ButtonHeader
 import { HeadertInnerContentStyled, HeadertStyled, LeftHeadertStyled, LogoHeadertStyled, RighttHeadertStyled } from "./Styled.CustomHeader"
 
 
-const CustomHeader = () => {
+const CustomHeader = ({isHome = true }) => {
     const navigate = useNavigate();
     return(
         <HeadertStyled>
@@ -13,12 +13,18 @@ const CustomHeader = () => {
                     <TitleHeaderStyled>SPORT LIMA CENTER</TitleHeaderStyled>
                 </LeftHeadertStyled>
                 <RighttHeadertStyled>
-                    <ItemHeaderStyled onClick={()=> navigate('/')}>HOME</ItemHeaderStyled>
-                    <ItemHeaderStyled>SEDES</ItemHeaderStyled>
-                    <ItemHeaderStyled>TORNEOS</ItemHeaderStyled>
-                    <ItemLastHeaderStyled>CONTACTO</ItemLastHeaderStyled>
-                    <ButtonHeaderStyled onClick={() => navigate("/login")}>INGRESAR</ButtonHeaderStyled>
-                    <Button2HeaderStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderStyled>
+                    { isHome ? (
+                        <>
+                            <ItemHeaderStyled onClick={()=> navigate('/')}>HOME</ItemHeaderStyled>
+                            <ItemHeaderStyled>SEDES</ItemHeaderStyled>
+                            <ItemHeaderStyled>TORNEOS</ItemHeaderStyled>
+                            <ItemLastHeaderStyled>CONTACTO</ItemLastHeaderStyled>
+                            <ButtonHeaderStyled onClick={() => navigate("/login")}>INGRESAR</ButtonHeaderStyled>
+                            <Button2HeaderStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderStyled>
+                        </>
+                    ) : (
+                        <ItemHeaderStyled>RENZO YARLEQUE VEGA</ItemHeaderStyled>
+                    )}
                 </RighttHeadertStyled>
             </HeadertInnerContentStyled>
         </HeadertStyled>

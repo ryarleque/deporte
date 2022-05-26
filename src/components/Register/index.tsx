@@ -5,7 +5,7 @@ import Axios from "axios";
 import CustomHeader from "../CustomHeader";
 import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";
 import Spinner from "../Spinner/index";
-;
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -21,13 +21,13 @@ const Login = () => {
   const [codigoReferido, setCodigoReferido] = useState('');
   const planBase = 300
   const [isLoading, setLoading] = useState(false)
-  
+  const navigate = useNavigate();
+
   const handleNextStepRegister = () => {
     setSelectedForm(true)
     if(isValidName() && isValidLastName() && isValidDni() && isValidPhone() && isValidEmail() && isValidPassword()) {
       setError(false)
       setSecondSectionVisible(true)
-      // handleLogin()
     } else {
       setError(true)
       setSecondSectionVisible(false)
@@ -72,7 +72,8 @@ const Login = () => {
       ...info,
       id:planList3?.id,
       description: planList3?.name,
-      value: Math.round(planBase - Number(planList3?.price + '.' + planList3?.decimalPrice))
+      value: Math.round(planBase - Number(planList3?.price + '.' + planList3?.decimalPrice)),
+      suscription: planList3?.suscription,
     }
   }
 
@@ -94,14 +95,16 @@ const Login = () => {
             promo: {
               description: getInfoSelectedPlan.description,
               value: getInfoSelectedPlan.value,
-              unit: 'S/.'
+              unit: 'S/.',
+              suscription: getInfoSelectedPlan.suscription
             },
-            codigoReferido
+            referralCode: codigoReferido
         }
       );
       console.log(data);
       setError(false)
       setLoading(false)
+      navigate('/')
     } catch (error) {
       setLoading(false)
       setError(true)

@@ -11,8 +11,7 @@ import Rendimiento from "../components/Rendimiento";
 import Reporte from "../components/Reporte";
 import Tests from "../components/Tests";
 import TomarAsistencia from "../components/TomarAsistencia";
-import UserInfo from "../components/UserInfo";
-const isLogged = false
+import UserInfo from "../components/UserInfo"
 
 function Routing() {
     return (

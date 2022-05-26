@@ -3,7 +3,9 @@ import { ButtonStyled, CardContainerStyled, CardtStyled, ContainerStyled, ErrorS
   import Axios from "axios";
 import CustomHeader from "../CustomHeader";
 import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";import Spinner from "../Spinner";
-;
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 const Register = () => {
 
@@ -11,6 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [isError, setError] = useState(false)
   const [isLoading, setLoading] = useState(false)
+  const navigate = useNavigate();
   
   const handleLogin = () => {
     console.log(user)
@@ -28,9 +31,21 @@ const Register = () => {
             user, password
         }
       );
-      console.log(data);
+      const decoded = jwt_decode(data?.token) as any
+      console.log(decoded)
       setError(false)
       setLoading(false)
+      Cookies.set('userRoleSportLimaCenter', decoded.roles[0], { expires: (1/24)*4 })
+      Cookies.set('userDniSportLimaCenter', decoded.sub , { expires: (1/24)*4 })
+      if(decoded?.roles[0] === 'ROLE_alumno') {
+        navigate('/datos')
+      }
+      if(decoded?.roles[0] === 'ROLE_profesor') {
+        navigate('/tomar-asistencia')
+      }
+      if(decoded?.roles[0] === 'ROLE_admin') {
+        navigate('/costos')
+      }
     } catch (error) {
       setLoading(false)
       setError(true)
@@ -55,8 +70,6 @@ const Register = () => {
         <ContentWhatsappStyled>
             <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
         </ContentWhatsappStyled>
-
-        {/* <CustomFooter/> */}
     </ContainerStyled>
   );
 }

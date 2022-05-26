@@ -5,6 +5,7 @@ import CustomHeader from "../CustomHeader";
 import { useEffect, useState } from "react";
 import { Axios } from "axios";
 import Spinner from "../Spinner";
+import Cookies from 'js-cookie'
 
 const UserInfo = () => {
     const option = [
@@ -24,10 +25,11 @@ const UserInfo = () => {
     const [isLoading, setLoading] = useState(false)
     
     useEffect(()=> {
-        getUserInfo()
+        const dni = Cookies.get('userDniSportLimaCenter')
+        getUserInfo(dni)
     }, [])
 
-    const getUserInfo = async () => {
+    const getUserInfo = async (dni: any) => {
         try {
           setLoading(true)
           setUserData({
@@ -39,7 +41,7 @@ const UserInfo = () => {
         //   const { data } = await Axios.get(
         //     process.env.REACT_APP_API + "users/datos",
         //     {
-        //         user
+        //         dni
         //     }
         //   );
           setLoading(false)
@@ -47,7 +49,7 @@ const UserInfo = () => {
           setLoading(false)
           console.log(error)
         }
-      };
+    };
 
     return (
         <>

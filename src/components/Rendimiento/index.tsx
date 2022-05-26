@@ -4,6 +4,7 @@ import { CardBodySectionItemTitleStyled, CardBodySectionTitleStyled, CardBodyTit
 import { useState, useEffect } from "react";
 import Spinner from "../Spinner";
 import CustomHeader from "../CustomHeader";
+import Cookies from 'js-cookie'
 
 const Rendimiento = () => {
     const option = [
@@ -22,10 +23,11 @@ const Rendimiento = () => {
     }]);
     
     useEffect(()=> {
-        getUserInfo()
+        const dni = Cookies.get('userDniSportLimaCenter')
+        getUserInfo(dni)
     }, [])
 
-    const getUserInfo = async () => {
+    const getUserInfo = async (dni: any) => {
         try {
           setLoading(true)
           setUserData([
@@ -63,7 +65,7 @@ const Rendimiento = () => {
         //   const { data } = await Axios.get(
         //     process.env.REACT_APP_API + "users/datos",
         //     {
-        //         user
+        //         dni
         //     }
         //   );
           setLoading(false)

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { CheckCircleFill, XCircleFill } from "react-bootstrap-icons";
 import Spinner from "../Spinner";
 import { AsistenciaContainerStyled, AsistenciaContentStyled, AsistenciaTitleStyled, CardContainerStyled, CardItemStyled, CardStyled } from "./Styled.TomarAsistencia";
+import Cookies from 'js-cookie'
 
 const TomarAsistencia = () => {
     const option = [
@@ -23,10 +24,11 @@ const TomarAsistencia = () => {
     const [isLoading, setLoading] = useState(false)
     
     useEffect(()=> {
-        getUserInfo()
+        const dni = Cookies.get('userDniSportLimaCenter')
+        getUserInfo(dni)
     }, [])
 
-    const getUserInfo = async () => {
+    const getUserInfo = async (dni: any) => {
         try {
           setLoading(true)
           setAsistencia([
@@ -64,7 +66,7 @@ const TomarAsistencia = () => {
         //   const { data } = await Axios.get(
         //     process.env.REACT_APP_API + "users/asistencia",
         //     {
-        //         user
+        //         dni
         //     }
         //   );
           setLoading(false)

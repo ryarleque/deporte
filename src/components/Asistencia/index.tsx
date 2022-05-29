@@ -1,9 +1,11 @@
 import Sidebard from "../Sidebar";
-import { PersonFill, Clipboard2CheckFill, BarChartFill, FileTextFill, PersonCheckFill } from 'react-bootstrap-icons';
-import { AsistenciaContentStyled, AsistenciaInnerContentStyled, AsistenciaInnerTitleContentStyled, Button2HeaderStyled, CardSectitonBottomStyled, CardSectitonTopInputStyled, CardSectitonTopStyled, CardSectitonTopTitleStyled, CardStyled, SeleccionarSedeContenrStyled, SelectItemContenrStyled } from "./Styled.Asistencia";
+import { PersonFill, Clipboard2CheckFill, CheckCircleFill, PersonCheckFill } from 'react-bootstrap-icons';
+import { AsistenciaContentStyled, AsistenciaInnerContentStyled, AsistenciaInnerTitleContentStyled, Button2HeaderStyled, CardSectitonBottomStyled, CardSectitonTopInputStyled, CardSectitonTopStyled, CardSectitonTopTitleStyled, CardStyled, CheckCircleFillStyled, CheckInnerContentStyled, SeleccionarSedeContenrStyled, SelectItemContenrStyled } from "./Styled.Asistencia";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import CustomHeader from "../CustomHeader";
+import Axios from "axios";
+import Cookies from 'js-cookie'
 
 const Asistencia = () => {
     const option = [
@@ -12,57 +14,73 @@ const Asistencia = () => {
     ];
 
     const [isLoading, setLoading] = useState(false)
-    const [sede, setSede] = useState(0)
+    const [sede, setSede] = useState(1)
     const [list, setList] = useState([{
-        'name': '',
+        'fullName': '',
         'remainingDays': 0
     }])
+    const token = Cookies.get('userTokenSportLimaCenter')
 
     useEffect(()=> {
         getUserListBySede(sede)
     }, [sede])
 
-    const getUserListBySede = async (idSede: number) => {
+    const getUserListBySede = async (sede: number) => {
         try {
           setLoading(true)
-          setList([
-                {
-                    'name': 'Renzo Yarleque',
-                    'remainingDays': 2
-                },
-                {
-                    'name': 'Carlos Vallejos',
-                    'remainingDays': 9
-                },
-                {
-                    'name': 'Christian Diaz',
-                    'remainingDays': 1
-                },
-                {
-                    'name': 'Renzo Yarleque',
-                    'remainingDays': 2
-                },
-                {
-                    'name': 'Carlos Vallejos',
-                    'remainingDays': 4
-                },
-                {
-                    'name': 'Christian Diaz',
-                    'remainingDays': 1
-                },
-            ])
-            //   const { data } = await Axios.get(
-            //     process.env.REACT_APP_API + "users/location",
-            //     {
-            //         idSede
-            //     }
-            //   );
+
+              const { data } = await Axios.get(
+                process.env.REACT_APP_API + "/users/branch/" + sede,
+                { 
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+              );
+            data.forEach((item: any) => {
+              item.isSuccess = false
+            });
+            setList(data)
             setLoading(false)
         } catch (error) {
           setLoading(false)
           console.log(error)
         }
     };
+
+    const [kilometros, setKilometros] = useState(0)
+    const [calorias, setCalorias] = useState(0)
+
+    const saveAsistencia = async (item:any, km: number, calories:number) => {
+        try {
+            setLoading(true)
+            const { data } = await Axios.post(
+              process.env.REACT_APP_API + "/attendance",
+              {
+                 attendances: [
+                      { userId: item.id , km, calories }
+                  ]
+              },
+              {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }}
+            );
+            item.isSuccess = true;
+            setLoading(false)
+            cleanVariables()
+            console.log(data)
+          } catch (error) {
+              cleanVariables()
+              setLoading(false)
+              console.log(error)
+          }
+    }
+
+    const cleanVariables = () => {
+        setKilometros(0)
+        setCalorias(0)
+    }
 
     return (
         <>
@@ -75,27 +93,25 @@ const Asistencia = () => {
                     <SeleccionarSedeContenrStyled>
                         <div>Seleccionar Sede</div>
                         <SelectItemContenrStyled name="select" onChange={(e) => setSede(e.target.value as any)}>
-                            <option value={0}>Surquillo</option>
-                            <option value={1} >Ate</option>
+                            <option value={1}>Surquillo</option>
+                            <option value={0} >Ate</option>
                         </SelectItemContenrStyled>
                     </SeleccionarSedeContenrStyled>  
                     <div>
                         {list.map((item:any, index:number) => (
                             <CardStyled>
+                                { item.isSuccess && <CheckInnerContentStyled><CheckCircleFillStyled/></CheckInnerContentStyled> }
                                 <CardSectitonTopStyled>
-                                    <CardSectitonTopTitleStyled>{item.name}</CardSectitonTopTitleStyled>
-                                    <div>
-                                        <label><CardSectitonTopInputStyled type='checkbox'/>Asistio?</label>
-                                    </div>
+                                    <CardSectitonTopTitleStyled>{item.fullName}</CardSectitonTopTitleStyled>
                                 </CardSectitonTopStyled>
                                 <div>
-                                    <div><CardSectitonBottomStyled type='number' placeholder="Ingresar kilometros"/></div>
-                                    <div><CardSectitonBottomStyled type='number' placeholder="Ingresar calorias"/></div>
+                                    <div><CardSectitonBottomStyled type='number' placeholder="Ingresar kilometros" onChange={(e)=> setKilometros(Number(e.target.value))}/></div>
+                                    <div><CardSectitonBottomStyled type='number' placeholder="Ingresar calorias" onChange={(e)=> setCalorias(Number(e.target.value))}/></div>
+                                    <Button2HeaderStyled onClick={() => saveAsistencia(item, kilometros, calorias)}>GUARDAR</Button2HeaderStyled>
                                 </div>
                             </CardStyled>
                         ))}
                     </div>
-                    <Button2HeaderStyled>GUARDAR</Button2HeaderStyled>
                 </AsistenciaInnerContentStyled>
             </AsistenciaContentStyled>
         </>

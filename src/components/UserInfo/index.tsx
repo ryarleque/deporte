@@ -3,7 +3,7 @@ import { PersonFill, Clipboard2CheckFill, BarChartFill, FileTextFill } from 'rea
 import { UserContainerStyled, UserInfoContentStyled, UserInfoList, UserSubTitleStyled, UserTitleStyled } from "./Styled.UserInfo";
 import CustomHeader from "../CustomHeader";
 import { useEffect, useState } from "react";
-import { Axios } from "axios";
+import Axios from "axios";
 import Spinner from "../Spinner";
 import Cookies from 'js-cookie'
 
@@ -16,34 +16,35 @@ const UserInfo = () => {
     ];
     
     const [userData, setUserData] = useState({
-        'name': '',
+        'fullName': '',
         'dni': '',
         'phone': '',
         'email': '',
+        'startDate': [],
+        'remainingDays': ''
     });
 
     const [isLoading, setLoading] = useState(false)
+    const token = Cookies.get('userTokenSportLimaCenter')
     
     useEffect(()=> {
         const dni = Cookies.get('userDniSportLimaCenter')
-        getUserInfo(dni)
+        getUserInfo(dni as any)
     }, [])
 
-    const getUserInfo = async (dni: any) => {
+    const getUserInfo = async (dni: string) => {
         try {
           setLoading(true)
-          setUserData({
-            'name': 'Renzo Yarleque',
-            'dni': '47815972',
-            'phone': '983475754',
-            'email': 'renzoyarleque@gmail.com',
-        })
-        //   const { data } = await Axios.get(
-        //     process.env.REACT_APP_API + "users/datos",
-        //     {
-        //         dni
-        //     }
-        //   );
+            const { data } = await Axios.get(
+                process.env.REACT_APP_API + "/users/dni/" + dni , 
+                { 
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+                
+            );
+          setUserData(data)
           setLoading(false)
         } catch (error) {
           setLoading(false)
@@ -61,7 +62,7 @@ const UserInfo = () => {
                     <UserTitleStyled>DATOS DEL USUARIO</UserTitleStyled>
                     <UserInfoList>
                         <UserSubTitleStyled>NOMBRE Y APELLIDO</UserSubTitleStyled>
-                        <div>{userData.name}</div>
+                        <div>{userData.fullName}</div>
                     </UserInfoList>
                     <UserInfoList>
                         <UserSubTitleStyled>DNI</UserSubTitleStyled>
@@ -75,7 +76,15 @@ const UserInfo = () => {
                         <UserSubTitleStyled>EMAIL</UserSubTitleStyled>
                         <div>{userData.email}</div>
                     </UserInfoList>
-                </UserContainerStyled   >
+                    <UserInfoList>
+                        <UserSubTitleStyled>FECHA DE INICIO</UserSubTitleStyled>
+                        <div>{userData.startDate[1]}/{userData.startDate[2]}/{userData.startDate[0]}</div>
+                    </UserInfoList>
+                    <UserInfoList>
+                        <UserSubTitleStyled>SESIONES PENDIENTES</UserSubTitleStyled>
+                        <div>{userData.remainingDays}</div>
+                    </UserInfoList>
+                </UserContainerStyled >
             </UserInfoContentStyled>
         </>
     );

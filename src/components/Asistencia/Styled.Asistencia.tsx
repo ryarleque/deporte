@@ -1,4 +1,6 @@
+import { CheckCircleFill } from 'react-bootstrap-icons';
 import styled from 'styled-components';
+import { keyframes } from 'styled-components'
 
 export const AsistenciaContentStyled = styled.div`    
   && {
@@ -46,13 +48,39 @@ export const CardStyled = styled.div`
     background: #f7b643;
     border-radius: 6px;
     padding: 1rem 1rem 0.5rem 1rem;
+    position: relative;
+  }
+`;
+
+export const CheckCircleFillStyled = styled(CheckCircleFill)`
+  && {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    color: green;
+    transform: translate(50%,-50%);
+    width: 80px;
+    height: 80px;
+  }
+`;
+
+export const CheckInnerContentStyled = styled.div`
+  && {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    text-align: center;
+    background: #808080cc;
   }
 `;
 
 export const CardSectitonTopStyled = styled.div`
   && {
-    display: flex;
+    display: block;
     align-items: center;
+    text-align: center;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 1.5rem;
@@ -99,10 +127,6 @@ export const Button2HeaderStyled = styled.div`
     cursor: pointer;
     text-align: center;
     border-radius: 6px;
-    &:hover {
-        color: black;
-        border-color: #f7b643;
-        background-color: #f7b643;
-    }
+    margin-bottom: 0.5rem;
   }
 `; 

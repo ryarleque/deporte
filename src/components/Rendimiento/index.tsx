@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Spinner from "../Spinner";
 import CustomHeader from "../CustomHeader";
 import Cookies from 'js-cookie'
+import Axios from "axios";
 
 const Rendimiento = () => {
     const option = [
@@ -15,10 +16,11 @@ const Rendimiento = () => {
     ];
 
     const [isLoading, setLoading] = useState(false)
+    const token = Cookies.get('userTokenSportLimaCenter')
     const [userData, setUserData] = useState([{
         'session': '',
-        'date': '',
-        'distancia': '',
+        'date': [],
+        'km': '',
         'calorias': '',
     }]);
     
@@ -30,44 +32,16 @@ const Rendimiento = () => {
     const getUserInfo = async (dni: any) => {
         try {
           setLoading(true)
-          setUserData([
-            {
-                'session': '1',
-                'date': '30/10/2022',
-                'distancia': '3.6',
-                'calorias': '420',
-            },
-            {
-                'session': '2',
-                'date': '02/11/2022',
-                'distancia': '4.6',
-                'calorias': '320',
-            },
-            {
-                'session': '3',
-                'date': '05/11/2022',
-                'distancia': '5.8',
-                'calorias': '420',
-            },
-            {
-                'session': '4',
-                'date': '10/11/2022',
-                'distancia': '7.1',
-                'calorias': '512',
-            },
-            {
-                'session': '5',
-                'date': '13/11/2022',
-                'distancia': '7.3',
-                'calorias': '579',
+          const { data } = await Axios.get(
+            process.env.REACT_APP_API + "/performance/info",
+            { 
+                params: { dni },
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             }
-          ])
-        //   const { data } = await Axios.get(
-        //     process.env.REACT_APP_API + "users/datos",
-        //     {
-        //         dni
-        //     }
-        //   );
+          );
+          setUserData(data)
           setLoading(false)
         } catch (error) {
           setLoading(false)
@@ -86,19 +60,19 @@ const Rendimiento = () => {
                     { userData.map((item: any, index:number) => (
                         <CardStyled>
                             <CardHeaderStyled>
-                                <CardHeaderTitleStyled>Sesion {item.session}</CardHeaderTitleStyled>
-                                <div>{item.date}</div>
+                                <CardHeaderTitleStyled>Sesion {index + 1}</CardHeaderTitleStyled>
+                                <div>{item.date[1]}/{item.date[2]}/{item.date[0]}</div>
                             </CardHeaderStyled>
 
                             <CardBodyTitleStyled>
                                 <CardBodySectionTitleStyled>
                                     <div>Recorrido</div>
-                                    <CardBodySectionItemTitleStyled>{item.distancia}</CardBodySectionItemTitleStyled>
+                                    <CardBodySectionItemTitleStyled>{item.km}</CardBodySectionItemTitleStyled>
                                     <div>km</div>
                                 </CardBodySectionTitleStyled>
                                 <CardBodySectionTitleStyled>
                                     <div>Calorias</div>
-                                    <CardBodySectionItemTitleStyled>{item.calorias}</CardBodySectionItemTitleStyled>
+                                    <CardBodySectionItemTitleStyled>{item.calories}</CardBodySectionItemTitleStyled>
                                     <div>Kcaloriass</div>
                                 </CardBodySectionTitleStyled>
                             </CardBodyTitleStyled>

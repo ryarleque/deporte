@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ButtonStyled, CardContainerStyled, CardtStyled, ContainerStyled, ErrorStyled, InputStyled, TitleStyled } from "./Styled.button";
-  import Axios from "axios";
+import Axios from "axios";
 import CustomHeader from "../CustomHeader";
 import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";import Spinner from "../Spinner";
 import jwt_decode from "jwt-decode";
@@ -26,7 +26,7 @@ const Register = () => {
     try {
       setLoading(true)
       const { data } = await Axios.post(
-        process.env.REACT_APP_API + "users/login",
+        process.env.REACT_APP_API + "/users/login",
         {
             user, password
         }
@@ -37,6 +37,7 @@ const Register = () => {
       setLoading(false)
       Cookies.set('userRoleSportLimaCenter', decoded.roles[0], { expires: (1/24)*4 })
       Cookies.set('userDniSportLimaCenter', decoded.sub , { expires: (1/24)*4 })
+      Cookies.set('userTokenSportLimaCenter', data?.token , { expires: (1/24)*4 })
       if(decoded?.roles[0] === 'ROLE_alumno') {
         navigate('/datos')
       }

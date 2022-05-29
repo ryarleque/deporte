@@ -66,14 +66,14 @@ const Login = () => {
   }
 
   const getInfoPlan = () => {
-    const info = { id: 0, description: '', value: 0, unit: 'S/.' }
+    const info = { id: 0, description: '', value: 0, unit: 'S/.', months: 0 }
     const planList3 = planList.find((item:any) => item.name === selectedPlan)
     return {
       ...info,
       id:planList3?.id,
       description: planList3?.name,
       value: Math.round(planBase - Number(planList3?.price + '.' + planList3?.decimalPrice)),
-      suscription: planList3?.suscription,
+      months: planList3?.suscription,
     }
   }
 
@@ -82,7 +82,7 @@ const Login = () => {
     const getInfoSelectedPlan = getInfoPlan()
     try {
       const { data } = await Axios.post(
-        process.env.REACT_APP_API + "users/register",
+        process.env.REACT_APP_API + "/users/register",
         {
             user : String(dni),
             name,
@@ -96,7 +96,7 @@ const Login = () => {
               description: getInfoSelectedPlan.description,
               value: getInfoSelectedPlan.value,
               unit: 'S/.',
-              suscription: getInfoSelectedPlan.suscription
+              months: getInfoSelectedPlan.months
             },
             referralCode: codigoReferido
         }
@@ -113,9 +113,9 @@ const Login = () => {
   };
   
   const planList = [
-    {id:0, name: 'PROMO PENSÁ', suscription: '12 meses', free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
-    {id:1, name: 'PROMO LAPADULA', suscription: '5 meses', free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
-    {id:2, name: 'PROMO CUEVITA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+    {id:0, name: 'PROMO PENSÁ', suscription: 12, free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
+    {id:1, name: 'PROMO LAPADULA', suscription: 5, free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
+    {id:2, name: 'PROMO CUEVITA', suscription: 3, free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
   ];
 
   const [selectedPlan, setSelectedPlan] = useState('PROMO PENSÁ')
@@ -158,7 +158,7 @@ const Login = () => {
                 <PlanCardItemStyled >{item.name}</PlanCardItemStyled>
                 <PlanCardListStyled>
                   <div className="item">Suscripción</div>
-                  <div>{item.suscription}</div>
+                  <div>{item.suscription} meses</div>
                 </PlanCardListStyled>
                 <PlanCardListStyled>
                   <div className="item">Incluye</div>

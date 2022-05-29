@@ -11,8 +11,7 @@ export const AsistenciaContentStyled = styled.div`
 export const AsistenciaInnerContentStyled = styled.div`    
   && {
     padding: 2rem;
-    width: 500px;
-    // width: 100%;
+    width: 100%;
   }
 `;
 
@@ -23,6 +22,14 @@ export const AsistenciaInnerTitleContentStyled = styled.div`
     margin-bottom: 4rem;
   }
 `;
+
+export const CustomContainerStyled = styled.div`    
+  && {
+    width: 400px;
+    margin: 0 auto;
+  }
+`;
+
 
 export const SeleccionarSedeContenrStyled = styled.div`    
   && {

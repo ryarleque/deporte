@@ -4,7 +4,7 @@ import CustomHeader from "../CustomHeader";
 import { useEffect, useState } from "react";
 import { CheckCircleFill, XCircleFill } from "react-bootstrap-icons";
 import Spinner from "../Spinner";
-import { AsistenciaContainerStyled, AsistenciaContentStyled, AsistenciaTitleStyled, CardContainerStyled, CardItemStyled, CardStyled } from "./Styled.TomarAsistencia";
+import { AsistenciaContainerStyled, AsistenciaContentStyled, AsistenciaTitleStyled, CardContainerStyled, CardItemStyled, CardStyled, CustomContainerStyled } from "./Styled.TomarAsistencia";
 import Cookies from 'js-cookie'
 
 const TomarAsistencia = () => {
@@ -82,18 +82,19 @@ const TomarAsistencia = () => {
             <AsistenciaContentStyled>
                 <Sidebard list={option}/>
                 { isLoading && <Spinner /> }
-                
                 <AsistenciaContainerStyled>
                     <AsistenciaTitleStyled>ASISTENCIA</AsistenciaTitleStyled>
-                    {asistencia.map((item:any) => (
-                        <CardContainerStyled>
-                            <CardItemStyled>
-                                <div>{item.date}</div>
-                                <div>{item.sede}</div>
-                                {item.isAssistance ? <CheckCircleFill style={{color: 'green'}}/> : <XCircleFill style={{color: '#a21503'}}/> }
-                            </CardItemStyled>
-                        </CardContainerStyled>
-                    ))}
+                    <CustomContainerStyled>
+                        {asistencia.map((item:any) => (
+                            <CardContainerStyled>
+                                <CardItemStyled>
+                                    <div>{item.date}</div>
+                                    <div>{item.sede}</div>
+                                    {item.isAssistance ? <CheckCircleFill style={{color: 'green'}}/> : <XCircleFill style={{color: '#a21503'}}/> }
+                                </CardItemStyled>
+                            </CardContainerStyled>
+                        ))}
+                    </CustomContainerStyled>
                 </AsistenciaContainerStyled>
             </AsistenciaContentStyled>
         </div>

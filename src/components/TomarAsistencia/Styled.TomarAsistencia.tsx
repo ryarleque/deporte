@@ -23,10 +23,17 @@ export const AsistenciaTitleStyled = styled.div`
   }
 `;
 
+export const CustomContainerStyled = styled.div`    
+  && {
+    margin: 0 auto;
+    width: 500px;
+  }
+`;
+
 export const CardContainerStyled = styled.div`
   && {
     margin-bottom: 2rem;
-    max-width: 500px;
+    width: 100%;
   }
 `;
 

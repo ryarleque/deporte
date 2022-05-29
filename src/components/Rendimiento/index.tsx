@@ -1,6 +1,6 @@
 import Sidebard from "../Sidebar";
 import { PersonFill, Clipboard2CheckFill, BarChartFill, FileTextFill } from 'react-bootstrap-icons';
-import { CardBodySectionItemTitleStyled, CardBodySectionTitleStyled, CardBodyTitleStyled, CardHeaderStyled, CardHeaderTitleStyled, CardStyled, RendimientoContentStyled, RendimientoInnterContentStyled, TitleStyled } from "./Styled.Rendimiento";
+import { CardBodySectionItemTitleStyled, CardBodySectionTitleStyled, CardBodyTitleStyled, CardHeaderStyled, CardHeaderTitleStyled, CardStyled, CustomContentStyled, RendimientoContentStyled, RendimientoInnterContentStyled, TitleStyled } from "./Styled.Rendimiento";
 import { useState, useEffect } from "react";
 import Spinner from "../Spinner";
 import CustomHeader from "../CustomHeader";
@@ -57,27 +57,29 @@ const Rendimiento = () => {
                 { isLoading && <Spinner /> }
                 <RendimientoInnterContentStyled>
                     <TitleStyled>RENDIMIENTO DIARIO</TitleStyled>
-                    { userData.map((item: any, index:number) => (
-                        <CardStyled>
-                            <CardHeaderStyled>
-                                <CardHeaderTitleStyled>Sesion {index + 1}</CardHeaderTitleStyled>
-                                <div>{item.date[1]}/{item.date[2]}/{item.date[0]}</div>
-                            </CardHeaderStyled>
+                    <CustomContentStyled>
+                        { userData.map((item: any, index:number) => (
+                            <CardStyled>
+                                <CardHeaderStyled>
+                                    <CardHeaderTitleStyled>Sesion {index + 1}</CardHeaderTitleStyled>
+                                    <div>{item.date[1]}/{item.date[2]}/{item.date[0]}</div>
+                                </CardHeaderStyled>
 
-                            <CardBodyTitleStyled>
-                                <CardBodySectionTitleStyled>
-                                    <div>Recorrido</div>
-                                    <CardBodySectionItemTitleStyled>{item.km}</CardBodySectionItemTitleStyled>
-                                    <div>km</div>
-                                </CardBodySectionTitleStyled>
-                                <CardBodySectionTitleStyled>
-                                    <div>Calorias</div>
-                                    <CardBodySectionItemTitleStyled>{item.calories}</CardBodySectionItemTitleStyled>
-                                    <div>Kcaloriass</div>
-                                </CardBodySectionTitleStyled>
-                            </CardBodyTitleStyled>
-                        </CardStyled>
-                    ))}
+                                <CardBodyTitleStyled>
+                                    <CardBodySectionTitleStyled>
+                                        <div>Recorrido</div>
+                                        <CardBodySectionItemTitleStyled>{item.km}</CardBodySectionItemTitleStyled>
+                                        <div>km</div>
+                                    </CardBodySectionTitleStyled>
+                                    <CardBodySectionTitleStyled>
+                                        <div>Calorias</div>
+                                        <CardBodySectionItemTitleStyled>{item.calories}</CardBodySectionItemTitleStyled>
+                                        <div>Kcaloriass</div>
+                                    </CardBodySectionTitleStyled>
+                                </CardBodyTitleStyled>
+                            </CardStyled>
+                        ))}
+                    </CustomContentStyled>
                 </RendimientoInnterContentStyled>
             </RendimientoContentStyled>
         </>

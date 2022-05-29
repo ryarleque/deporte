@@ -1,6 +1,6 @@
 import Sidebard from "../Sidebar";
 import { PersonFill, Clipboard2CheckFill, CheckCircleFill, PersonCheckFill } from 'react-bootstrap-icons';
-import { AsistenciaContentStyled, AsistenciaInnerContentStyled, AsistenciaInnerTitleContentStyled, Button2HeaderStyled, CardSectitonBottomStyled, CardSectitonTopInputStyled, CardSectitonTopStyled, CardSectitonTopTitleStyled, CardStyled, CheckCircleFillStyled, CheckInnerContentStyled, SeleccionarSedeContenrStyled, SelectItemContenrStyled } from "./Styled.Asistencia";
+import { AsistenciaContentStyled, AsistenciaInnerContentStyled, AsistenciaInnerTitleContentStyled, Button2HeaderStyled, CardSectitonBottomStyled, CardSectitonTopInputStyled, CardSectitonTopStyled, CardSectitonTopTitleStyled, CardStyled, CheckCircleFillStyled, CheckInnerContentStyled, CustomContainerStyled, SeleccionarSedeContenrStyled, SelectItemContenrStyled } from "./Styled.Asistencia";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import CustomHeader from "../CustomHeader";
@@ -97,9 +97,9 @@ const Asistencia = () => {
                             <option value={0} >Ate</option>
                         </SelectItemContenrStyled>
                     </SeleccionarSedeContenrStyled>  
-                    <div>
+                    <CustomContainerStyled>
                         {list.map((item:any, index:number) => (
-                            <CardStyled>
+                            <CardStyled key={index}>
                                 { item.isSuccess && <CheckInnerContentStyled><CheckCircleFillStyled/></CheckInnerContentStyled> }
                                 <CardSectitonTopStyled>
                                     <CardSectitonTopTitleStyled>{item.fullName}</CardSectitonTopTitleStyled>
@@ -111,7 +111,7 @@ const Asistencia = () => {
                                 </div>
                             </CardStyled>
                         ))}
-                    </div>
+                    </CustomContainerStyled>
                 </AsistenciaInnerContentStyled>
             </AsistenciaContentStyled>
         </>

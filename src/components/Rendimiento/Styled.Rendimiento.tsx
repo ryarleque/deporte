@@ -15,6 +15,13 @@ export const RendimientoInnterContentStyled = styled.div`
   }
 `;
 
+export const CustomContentStyled = styled.div`    
+  && {
+    margin: 0 auto;
+    width: 450px;
+  }
+`;
+
 export const TitleStyled = styled.div`    
   && {
     font-size: 1.5rem;
@@ -27,7 +34,7 @@ export const CardStyled = styled.div`
   && {
     border-radius: 6px;
     margin-bottom: 3rem;
-    max-width: 350px;
+    width: 100%;
     box-shadow: 5px 9px 11px 0px rgb(0 0 0 / 36%), 0 8px 16px rgb(0 0 0 / 10%);
   }
 `;

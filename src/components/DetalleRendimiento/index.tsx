@@ -1,6 +1,6 @@
 import Sidebard from "../Sidebar";
 import { PersonFill, Clipboard2CheckFill, BarChartFill, FileTextFill } from 'react-bootstrap-icons';
-import { DetalleRendimientoContentStyled, DetalleRendimientoInnerContentStyled } from "./Styled.DetalleRendimiento";
+import { CardContentStyled, CardDetailLeftStyled, CardDetailRightStyled, CardDetailsStyled, CardImageStyled, CardItemDetailStyled, CardNumberDetailStyled, CardTitleStyled, CardUserNameStyled, DetalleRendimientoContentStyled, DetalleRendimientoInnerContentStyled } from "./Styled.DetalleRendimiento";
 import { useState, useEffect } from "react";
 import CustomHeader from "../CustomHeader";
 import Spinner from "../Spinner";
@@ -82,61 +82,26 @@ const DetalleRendimiento = () => {
                 <Sidebard list={option}/>
                 { isLoading && <Spinner /> }
                 <DetalleRendimientoInnerContentStyled>
-                    <div>content DetalleRendimiento</div>
-                    <div>
-                        <div>
-                            <div>TEST 1</div>
-                            <div>{'>'}</div>
-                        </div>
+                    <div>RENDIMIENTO DE TEST</div>
+                    <CardContentStyled>
+                        <CardTitleStyled>Evaluacion 1</CardTitleStyled>
+                        <CardImageStyled src={require("../../Assets/card.png")} alt="logo"/>
+                        <div>FOTO</div>
+                        <CardUserNameStyled>Nombre completo</CardUserNameStyled>
+                        <CardDetailsStyled>
+                            <CardDetailLeftStyled>
+                                <CardNumberDetailStyled>91 <CardItemDetailStyled>RIT</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>75 <CardItemDetailStyled>TIR</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>77 <CardItemDetailStyled>PAS</CardItemDetailStyled></CardNumberDetailStyled>
+                            </CardDetailLeftStyled>
 
-                        <div>
-                            <div>
-                                <div>V. Promedio</div>
-                                <div>30.02</div>
-                                <div>km/h</div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <div>RESISTENCIA</div>
-                                    <div>
-                                        <div>1:30</div>
-                                        <div>km</div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div>POTENCIA</div>
-                                    <div>DISTAPARO</div>
-                                    <div>
-                                        <div>1:30</div>
-                                        <div>km</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <div>POTENCIA</div>
-                                    <div>FISICA</div>
-                                    <div>
-                                        <div>4</div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div>DEFINICION</div>
-                                    <div>
-                                        <div>25.3</div>
-                                        <div>km</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div>VER DETALLE</div>
-                    </div>
+                            <CardDetailRightStyled>
+                                <CardNumberDetailStyled>86 <CardItemDetailStyled>REG</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>46 <CardItemDetailStyled>DEF</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>62 <CardItemDetailStyled>FIS</CardItemDetailStyled></CardNumberDetailStyled>
+                            </CardDetailRightStyled>
+                        </CardDetailsStyled>
+                    </CardContentStyled>
                 </DetalleRendimientoInnerContentStyled>
             </DetalleRendimientoContentStyled>
         </>

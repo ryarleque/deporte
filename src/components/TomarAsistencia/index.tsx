@@ -6,6 +6,7 @@ import { CheckCircleFill, XCircleFill } from "react-bootstrap-icons";
 import Spinner from "../Spinner";
 import { AsistenciaContainerStyled, AsistenciaContentStyled, AsistenciaTitleStyled, CardContainerStyled, CardItemStyled, CardStyled, CustomContainerStyled } from "./Styled.TomarAsistencia";
 import Cookies from 'js-cookie'
+import Axios from "axios";
 
 const TomarAsistencia = () => {
     const option = [
@@ -16,13 +17,14 @@ const TomarAsistencia = () => {
     ];
     
     const [asistencia, setAsistencia] = useState([{
-        'date': '',
-        'sede': '',
-        'isAssistance': false,
+        'date': [],
+        'branch': '',
+        'attended': false,
     }]);
 
     const [isLoading, setLoading] = useState(false)
-    
+    const token = Cookies.get('userTokenSportLimaCenter')
+
     useEffect(()=> {
         const dni = Cookies.get('userDniSportLimaCenter')
         getUserInfo(dni)
@@ -31,44 +33,16 @@ const TomarAsistencia = () => {
     const getUserInfo = async (dni: any) => {
         try {
           setLoading(true)
-          setAsistencia([
-            {
-                'date': '20 Junio 2022',
-                'sede': 'Surquillo',
-                'isAssistance': true
-            },
-            {
-                'date': '23 Junio 2022',
-                'sede': 'Surquillo',
-                'isAssistance': false
-            },
-            {
-                'date': '26 Junio 2022',
-                'sede': 'Surquillo',
-                'isAssistance': true
-            },
-            {
-                'date': '29 Junio 2022',
-                'sede': 'Surquillo',
-                'isAssistance': false
-            },
-            {
-                'date': '03 Julioo 2022',
-                'sede': 'Surquillo',
-                'isAssistance': true
-            },
-            {
-                'date': '10 Julio 2022',
-                'sede': 'Surquillo',
-                'isAssistance': true
+          const { data } = await Axios.get(
+            process.env.REACT_APP_API + "/attendance",
+            { 
+                params: { dni },
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             }
-          ]);
-        //   const { data } = await Axios.get(
-        //     process.env.REACT_APP_API + "users/asistencia",
-        //     {
-        //         dni
-        //     }
-        //   );
+          );
+          setAsistencia(data)
           setLoading(false)
         } catch (error) {
           setLoading(false)
@@ -85,12 +59,12 @@ const TomarAsistencia = () => {
                 <AsistenciaContainerStyled>
                     <AsistenciaTitleStyled>ASISTENCIA</AsistenciaTitleStyled>
                     <CustomContainerStyled>
-                        {asistencia.map((item:any) => (
-                            <CardContainerStyled>
+                        {asistencia.map((item:any, index:number) => (
+                            <CardContainerStyled key={index}>
                                 <CardItemStyled>
-                                    <div>{item.date}</div>
-                                    <div>{item.sede}</div>
-                                    {item.isAssistance ? <CheckCircleFill style={{color: 'green'}}/> : <XCircleFill style={{color: '#a21503'}}/> }
+                                    <div>{item.date[1]}/{item.date[2]}/{item.date[0]}</div>
+                                    <div>{item.branch}</div>
+                                    {item.attended ? <CheckCircleFill style={{color: 'green'}}/> : <XCircleFill style={{color: '#a21503'}}/> }
                                 </CardItemStyled>
                             </CardContainerStyled>
                         ))}

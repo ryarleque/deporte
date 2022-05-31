@@ -11,7 +11,7 @@ const CustomHeader = () => {
                    <FacebbokContentStyled/>
                    <Instagram/>
                </SocialContentStyled>
-              <div>SPORT LIMA CENTER © 2022</div> 
+              <div>LIMA SPORT CENTER © 2022</div> 
            </FooterContentStyled>
     );
 }

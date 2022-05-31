@@ -10,8 +10,11 @@ export const AsistenciaContainerStyled = styled.div`
   && {
     display: flex;
     flex-flow: column;
-    padding: 3rem;
+    padding: 2rem;
     width: 100%;
+    @media(min-width: 600px) {
+      padding: 3rem;
+    }
   }
 `;
 
@@ -19,14 +22,21 @@ export const AsistenciaTitleStyled = styled.div`
   && {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
+    text-align:center;
+    @media(min-width: 600px) {
+      margin-bottom: 4rem;
+    }
   }
 `;
 
 export const CustomContainerStyled = styled.div`    
   && {
     margin: 0 auto;
-    width: 500px;
+    width: 300px;
+    @media(min-width: 600px) {
+      width: 500px;
+    }
   }
 `;
 

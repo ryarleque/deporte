@@ -59,7 +59,7 @@ const Rendimiento = () => {
                     <TitleStyled>RENDIMIENTO DIARIO</TitleStyled>
                     <CustomContentStyled>
                         { userData.map((item: any, index:number) => (
-                            <CardStyled>
+                            <CardStyled key={index}>
                                 <CardHeaderStyled>
                                     <CardHeaderTitleStyled>Sesion {index + 1}</CardHeaderTitleStyled>
                                     <div>{item.date[1]}/{item.date[2]}/{item.date[0]}</div>

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import CustomHeader from "../CustomHeader";
 import Spinner from "../Spinner";
 import Cookies from 'js-cookie'
+import { TitleStyled } from "../Rendimiento/Styled.Rendimiento";
 
 const DetalleRendimiento = () => {
     const option = [
@@ -82,7 +83,7 @@ const DetalleRendimiento = () => {
                 <Sidebard list={option}/>
                 { isLoading && <Spinner /> }
                 <DetalleRendimientoInnerContentStyled>
-                    <div>RENDIMIENTO DE TEST</div>
+                    <TitleStyled>RENDIMIENTO DE TEST</TitleStyled>
                     <CardContentStyled>
                         <CardTitleStyled>Evaluacion 1</CardTitleStyled>
                         <CardImageStyled src={require("../../Assets/card.png")} alt="logo"/>

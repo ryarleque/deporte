@@ -41,9 +41,12 @@ export const CardPlantStyled = styled.div`
     border-radius: 8px;
     box-shadow: 12px 20px 13px 0px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     box-sizing: border-box;
-    max-width: 700px;
+    width: 300px;
     margin: 0 auto;
     cursor: pointer;
+    @media(min-width: 600px) {
+      width: 700px;
+    }
   }
 `;
 

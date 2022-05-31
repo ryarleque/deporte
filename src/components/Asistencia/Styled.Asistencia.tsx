@@ -1,6 +1,5 @@
 import { CheckCircleFill } from 'react-bootstrap-icons';
 import styled from 'styled-components';
-import { keyframes } from 'styled-components'
 
 export const AsistenciaContentStyled = styled.div`    
   && {
@@ -19,14 +18,21 @@ export const AsistenciaInnerTitleContentStyled = styled.div`
   && {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    @media(min-width: 600px) {
+      margin-bottom: 4rem;
+    }
   }
 `;
 
 export const CustomContainerStyled = styled.div`    
   && {
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
+    @media(min-width: 600px) {
+      width: 400px;
+    }
   }
 `;
 
@@ -36,6 +42,7 @@ export const SeleccionarSedeContenrStyled = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    JUSTIFY-CONTENT: center;
   }
 `;
 

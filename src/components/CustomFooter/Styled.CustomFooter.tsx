@@ -46,6 +46,7 @@ export const ContentWhatsappStyled = styled.div`
     position: fixed;
     right: 2rem;
     bottom: 5rem;
+    z-index: 10000;
   }
 `;
 

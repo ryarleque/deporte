@@ -41,8 +41,8 @@ const Home = () => {
                     <ButtonHeaderStyled onClick={()=> navigate('/registrar')}>ÚNETE</ButtonHeaderStyled>
                     <PromotionContentColorStyled>
                         <PromotionColorStyled>#</PromotionColorStyled>
-                        <span>SPORT</span>
-                        <PromotionColorStyled>LIMA</PromotionColorStyled>
+                        <span>LIMA</span>
+                        <PromotionColorStyled>SPORT</PromotionColorStyled>
                         <span>CENTER</span>
                     </PromotionContentColorStyled>
                 </TitleCarouselStyled>

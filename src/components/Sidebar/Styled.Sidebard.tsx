@@ -9,10 +9,11 @@ export const ContentListStyled = styled.div`
     margin-right: 0;
     right: 0;
     left: 0;
-    width: 100%;r
+    width: 100%;
     padding: 0.25rem 0;
     position: fixed;
     bottom: 0;
+    z-index: 1000;
     box-shadow: 3px -5px 9px 6px rgb(0 0 0 / 36%), 0 8px 16px rgb(0 0 0 / 10%);
     @media(min-width: 600px) {
         width: 5rem;

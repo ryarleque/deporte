@@ -11,8 +11,11 @@ export const DetalleRendimientoInnerContentStyled = styled.div`
   && {
     display: flex;
     flex-flow: column;
-    padding: 3rem;
+    padding: 2rem;
     width: 100%;
+    @media(min-width: 600px) {
+      padding: 3rem;
+    }
   }
 `;
 

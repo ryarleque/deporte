@@ -18,6 +18,7 @@ export const TestTitleStyled = styled.div`
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 4rem;
+    text-align: center;
   }
 `;
 
@@ -58,7 +59,7 @@ export const TestCardStyled = styled.div`
     position: relative;
     margin: 0 auto;
     width: 400px;
-    margin-top: 4rem;
+    margin-top: 7rem;
   }
 `;
 
@@ -71,6 +72,7 @@ export const TestCardTitleStyled = styled.div`
     background: black;
     padding: 1rem;
     border-radius: 6px;
+    text-align: center;
   }
 `;
 

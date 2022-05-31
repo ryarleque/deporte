@@ -48,13 +48,18 @@ export const LogoHeadertStyled = styled.img`
 
 export const TitleHeaderStyled = styled.div`    
   && {
-    font-size: 23px;
-    font-weight: 900;
-    margin-left: 1rem;
+    font-size: 16px;
     line-height: 1.5rem;
+    width: 7.5rem;
+    font-weight: 900;
     font-family: sans-serif;
-    width: 10rem;
     color:white;
+    line-height: 2rem;
+    @media(min-width: 600px) {
+      font-size: 23px;
+      line-height: 1.5rem;
+      width: 10rem;
+    }
   }
 `;
 
@@ -67,6 +72,9 @@ export const ItemHeaderStyled = styled.div`
     color: #f9f4e1;
     &: hover {
         color: #f7b643;
+    }
+    @media(max-width: 900px) {
+      line-height: 3rem;
     }
   }
 `;
@@ -373,8 +381,11 @@ export const CardHomePlantStyled = styled.div`
     justify-content: center;
     border: none;
     border-radius: 8px;
-    max-width: 700px;
+    width: 300px;
     margin: 0 auto;
+    @media(min-width: 600px) {
+      width: 700px;
+    }
   }
 `;
 

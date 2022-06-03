@@ -14,7 +14,9 @@ const CustomHeader = ({isHome = true }) => {
     
     useEffect(()=> {
         const dni = Cookies.get('userDniSportLimaCenter')
-        getUserInfo(dni as any)
+        if(dni) {
+            getUserInfo(dni as any)
+        }
     }, [])
 
     const getUserInfo = async (dni: string) => {

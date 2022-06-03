@@ -1,10 +1,11 @@
 import Carousel from "react-bootstrap/esm/Carousel";
 import { useNavigate } from "react-router-dom";
 import CustomHeader from "../CustomHeader";
-import { ButtonHeaderStyled,Button2HeaderStyled, PlanCardInfotStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled, BeneficiosCardContainerStyled, BeneficiosCardStyled, BeneficiosCardTittleStyled, BeneficiosContentStyled, BeneficiosStyled, BeneficiosTittleStyled, SociosContentInnerStyled, SociosContentStyled, SociosListStyled, SociosTitleStyled, CardHomeContentPlantStyled, CardHomePlantStyled, PromoTittleStyled } from "./Styled.Home";
+import { ButtonHeaderStyled,Button2HeaderStyled, PlanCardInfotStyled, CarouselStyled, ContentCarouselStyled, HeadertStyled, HomeContentStyled, ItemHeaderStyled, ItemLastHeaderStyled, LeftHeadertStyled, LogoHeadertStyled, PromotionColorStyled, PromotionContentColorStyled, RighttHeadertStyled, TitleCarouselStyled, TitleHeaderStyled, ImageCarouselStyled, FacebbokContentStyled, FooterContentStyled, SocialContentStyled, WhatsappContentStyled, ContentWhatsappStyled, ContentStyled, TitleStyled, BeneficiosCardContainerStyled, BeneficiosCardStyled, BeneficiosCardTittleStyled, BeneficiosContentStyled, BeneficiosStyled, BeneficiosTittleStyled, SociosContentInnerStyled, SociosContentStyled, SociosListStyled, SociosTitleStyled, CardHomeContentPlantStyled, CardHomePlantStyled, PromoTittleStyled, SociosStyled } from "./Styled.Home";
 import { ButtonStyled } from "../Login/Styled.button";
 import { CardPlantStyled, PlanCardStyled, PlanCardItemStyled, PlanCardListStyled, PlanCardPricetStyled } from "../Register/Styled.button";
 import { useState } from "react";
+import Consuelo from '../../Assets/arte_Consuelo.svg';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -24,14 +25,14 @@ const Home = () => {
                     <Carousel.Item>
                         <ImageCarouselStyled
                         className="d-block w-100"
-                        src="https://media.gettyimages.com/photos/footballer-keeping-ball-up-picture-id102069425?s=612x612"
+                        src={require("../../Assets/portada.jfif")}
                         alt="First slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <ImageCarouselStyled
                         className="d-block w-100"
-                        src="https://media.gettyimages.com/photos/soccer-player-dressed-in-black-running-with-ball-at-night-picture-id1190197787?s=612x612"
+                        src={require("../../Assets/portada2.jpg")}
                         alt="Second slide"
                         />
                     </Carousel.Item>
@@ -76,7 +77,7 @@ const Home = () => {
                             <BeneficiosCardTittleStyled><div>Reportes</div><div>Detallados</div></BeneficiosCardTittleStyled>
                         </BeneficiosCardStyled>
                         <BeneficiosCardStyled>
-                            <BeneficiosCardTittleStyled><div>Plan</div><div>Nutricional</div></BeneficiosCardTittleStyled>
+                            <BeneficiosCardTittleStyled><div>Asesoria</div><div>Psicologica</div></BeneficiosCardTittleStyled>
                         </BeneficiosCardStyled>
                     </BeneficiosCardContainerStyled>
                 </BeneficiosContentStyled>
@@ -86,10 +87,9 @@ const Home = () => {
                 <SociosContentInnerStyled>
                     <SociosTitleStyled>Socios</SociosTitleStyled>
                     <SociosListStyled>
-                        <div>JOGO</div>
-                        <div>CARDELAGO ARQUITECTOS</div>
-                        <div>TORNEO</div>
-                        <div>WePay4U</div>
+                        <SociosStyled src={require("../../Assets/arqui.jfif")} alt="arqui"/>
+                        <SociosStyled src={require("../../Assets/jogo.jpeg")} alt="JOGO"/>
+                        <SociosStyled src={Consuelo} alt="consuelo"/>
                     </SociosListStyled>
                 </SociosContentInnerStyled>
             </SociosContentStyled>

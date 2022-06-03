@@ -149,7 +149,7 @@ export const TitleCarouselStyled = styled.div`
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: -7.25rem;
+    top: -3.5rem;
     @media(min-width: 600px) {
         top: -7rem;
     }
@@ -158,7 +158,7 @@ export const TitleCarouselStyled = styled.div`
 
 export const ImageCarouselStyled = styled.img`    
   && {
-    height: 55vh;
+    height: 35vh;
     @media(min-width: 600px) {
       height: 62vh;
     }
@@ -404,5 +404,13 @@ export const PlanCardInfotStyled = styled.div`
       PADDING: 0.25rem;
       COLOR: RED;
     }
+  }
+`;
+
+export const SociosStyled = styled.img`
+  && {
+    height: 8rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
   }
 `;

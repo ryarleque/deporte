@@ -66,7 +66,7 @@ const Login = () => {
   }
 
   const getInfoPlan = () => {
-    const info = { id: 0, description: '', value: 0, unit: 'S/.', months: 0 }
+    const info = { id: 1, description: '', value: 0, unit: 'S/.', months: 0 }
     const planList3 = planList.find((item:any) => item.name === selectedPlan)
     return {
       ...info,
@@ -81,6 +81,7 @@ const Login = () => {
     setLoading(true)
     const getInfoSelectedPlan = getInfoPlan()
     try {
+      debugger
       const { data } = await Axios.post(
         process.env.REACT_APP_API + "/users/register",
         {
@@ -113,9 +114,9 @@ const Login = () => {
   };
   
   const planList = [
-    {id:0, name: 'PROMO PENSÁ', suscription: 12, free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
-    {id:1, name: 'PROMO LAPADULA', suscription: 5, free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
-    {id:2, name: 'PROMO CUEVITA', suscription: 3, free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+    {id:1, name: 'PROMO PENSÁ', suscription: 12, free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
+    {id:2, name: 'PROMO LAPADULA', suscription: 5, free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
+    {id:3, name: 'PROMO CUEVITA', suscription: 3, free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
   ];
 
   const [selectedPlan, setSelectedPlan] = useState('PROMO PENSÁ')
@@ -173,7 +174,7 @@ const Login = () => {
                 </PlanCardPricetStyled>
               </PlanCardStyled>
             ))}
-            <ButtonStyled onClick={() => handleSetCard()}>CONTINUAR</ButtonStyled>
+            <ButtonStyled onClick={() => handleSetCard()}>REGISTRAR</ButtonStyled>
         </CardPlantStyled>)
         }
             

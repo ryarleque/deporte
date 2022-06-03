@@ -13,6 +13,8 @@ export const DetalleRendimientoInnerContentStyled = styled.div`
     flex-flow: column;
     padding: 2rem;
     width: 100%;
+    overflow: auto;
+    height: 97vh;
     @media(min-width: 600px) {
       padding: 3rem;
     }
@@ -28,6 +30,7 @@ export const CardContentStyled = styled.div`
     width: 300px;
     margin: 0 auto;
     border-radius: 6px;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -46,19 +49,21 @@ export const CardImageStyled = styled.img`
     width: 300px;
     margin: 0 auto;
     text-align: center;
+    height: 31rem;
   }
 `;
 
 export const CardUserNameStyled = styled.div`    
   && {
     position: absolute;
-    top: 16.5rem;
-    color: black;
+    top: 22rem;
+    color: #46390c;
     font-weight: 800;
     left: 0;
     right: 0;
     text-align: center;
     text-transform: uppercase;
+    font-size: 1.15rem;
   }
 `;
 
@@ -68,10 +73,10 @@ export const CardDetailsStyled = styled.div`
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 19.7rem;
+    top: 24.6rem;
     left: 0;
     right: 0;
-    color: black;
+    color: #46390c;
     font-family: 'Signika';
   }
 `;
@@ -100,5 +105,42 @@ export const CardNumberDetailStyled = styled.div`
 export const CardItemDetailStyled = styled.span`    
   && {
     font-weight: 400;
+  }
+`;
+
+export const UserInfoStyled = styled.img`    
+  && {
+    width: 7rem;
+    color: transparent;
+    background: transparent;
+    top: 11.5rem;
+    position: absolute;
+    left: 8.5rem;
+  }
+`;
+
+
+export const UserPromedioStyled = styled.div`    
+  && {
+    color: #46390c;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 10rem;
+    left: 3.8rem;
+    font-weight: 900;
+    border-bottom: 3px solid #46390c;
+    letter-spacing: -2px;
+  }
+`;
+;
+
+
+export const EscudoStyled = styled.img`    
+  && {
+    width: 4rem;
+    border-radius: 0.5rem;
+    top: 15rem;
+    position: absolute;
+    left: 3rem;
   }
 `;

@@ -12,6 +12,8 @@ export const RendimientoInnterContentStyled = styled.div`
     flex-flow: column;
     padding: 2rem;
     width: 100%;
+    overflow: auto;
+    height: 97vh;
     @media(min-width: 600px) {
       padding: 3rem;
     }

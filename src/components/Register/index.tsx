@@ -81,7 +81,6 @@ const Login = () => {
     setLoading(true)
     const getInfoSelectedPlan = getInfoPlan()
     try {
-      debugger
       const { data } = await Axios.post(
         process.env.REACT_APP_API + "/users/register",
         {

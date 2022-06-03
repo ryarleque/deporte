@@ -61,7 +61,7 @@ const Register = () => {
         <CardContainerStyled>
             <CardtStyled>
                 <TitleStyled>Ingresar credenciales</TitleStyled>
-                <InputStyled className={isError ? 'error' : ''} placeholder="Ingresar usuario" onChange={(e) => setUser(e.currentTarget.value)}/>
+                <InputStyled className={isError ? 'error' : ''} placeholder="Ingresar dni" onChange={(e) => setUser(e.currentTarget.value)}/>
                 <InputStyled className={isError ? 'error' : ''} placeholder="Ingresar constrasena" type='password' onChange={(e) => setPassword(e.currentTarget.value)}/>
                 { isError && <ErrorStyled>Datos incorrectos.</ErrorStyled> }
                 <ButtonStyled onClick={() => handleLogin()}>ENTRAR</ButtonStyled>

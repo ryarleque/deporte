@@ -1,6 +1,6 @@
 import Sidebard from "../Sidebar";
 import { PersonFill, Clipboard2CheckFill, BarChartFill, FileTextFill } from 'react-bootstrap-icons';
-import { CardContentStyled, CardDetailLeftStyled, CardDetailRightStyled, CardDetailsStyled, CardImageStyled, CardItemDetailStyled, CardNumberDetailStyled, CardTitleStyled, CardUserNameStyled, DetalleRendimientoContentStyled, DetalleRendimientoInnerContentStyled } from "./Styled.DetalleRendimiento";
+import { CardContentStyled, CardDetailLeftStyled, CardDetailRightStyled, CardDetailsStyled, CardImageStyled, CardItemDetailStyled, CardNumberDetailStyled, CardTitleStyled, CardUserNameStyled, DetalleRendimientoContentStyled, DetalleRendimientoInnerContentStyled, EscudoStyled, UserInfoStyled, UserPromedioStyled } from "./Styled.DetalleRendimiento";
 import { useState, useEffect } from "react";
 import CustomHeader from "../CustomHeader";
 import Spinner from "../Spinner";
@@ -64,7 +64,7 @@ const DetalleRendimiento = () => {
             }
           ])
         //   const { data } = await Axios.get(
-        //     process.env.REACT_APP_API + "users/datos",
+        //     process.env.REACT_APP_API + "/performance/tests?userId="+,
         //     {
         //         dni
         //     }
@@ -87,8 +87,10 @@ const DetalleRendimiento = () => {
                     <CardContentStyled>
                         <CardTitleStyled>Evaluacion 1</CardTitleStyled>
                         <CardImageStyled src={require("../../Assets/card.png")} alt="logo"/>
-                        <div>FOTO</div>
-                        <CardUserNameStyled>Nombre completo</CardUserNameStyled>
+                        <UserPromedioStyled>72</UserPromedioStyled>
+                        <UserInfoStyled src={require("../../Assets/user.png")} alt="logo" />
+                        <EscudoStyled src={require("../../Assets/logo.jpeg")} alt="logo" />
+                        <CardUserNameStyled>Renzo Yarleque</CardUserNameStyled>
                         <CardDetailsStyled>
                             <CardDetailLeftStyled>
                                 <CardNumberDetailStyled>91 <CardItemDetailStyled>RIT</CardItemDetailStyled></CardNumberDetailStyled>

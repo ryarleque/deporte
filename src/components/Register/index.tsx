@@ -112,10 +112,15 @@ const Login = () => {
     }
   };
   
+  // const planList = [
+  //   {id:1, name: 'PROMO PENSÁ', suscription: 12, free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
+  //   {id:2, name: 'PROMO LAPADULA', suscription: 5, free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
+  //   {id:3, name: 'PROMO CUEVITA', suscription: 3, free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+  // ];
   const planList = [
-    {id:1, name: 'PROMO PENSÁ', suscription: 12, free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
-    {id:2, name: 'PROMO LAPADULA', suscription: 5, free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
-    {id:3, name: 'PROMO CUEVITA', suscription: 3, free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+    {id:1, name: 'PROMO PENSÁ', suscription: '6 meses', free: [{value: 'Uniforme'},{value: '1 SEMANA GRATIS'}], price:'199', decimalPrice: '90' },
+    {id:2, name: 'PROMO LAPADULA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'224', decimalPrice: '90' },
+    {id:3, name: 'PROMO CUEVITA', suscription: '1 mes', free: [{value: 'Uniforme 20 Primeros'}], price:'249', decimalPrice: '90' },
   ];
 
   const [selectedPlan, setSelectedPlan] = useState('PROMO PENSÁ')
@@ -140,7 +145,7 @@ const Login = () => {
             <InputStyled type='text' className={isSelectedForm && !isValidName() ? 'error' : '' } placeholder='Ingresar nombre' onChange={(e) => setName(e.target.value)}/>
             <InputStyled type='text' className={isSelectedForm && !isValidLastName() ? 'error' : '' } placeholder='Ingresar apellidos' onChange={(e) => setLastname(e.target.value)}/>
             <InputStyled type='number' pattern="\d*" maxLength={8} className={isSelectedForm && !isValidDni() ? 'error' : '' } placeholder='Ingresar dni' onChange={(e) => setDni(Number(e.target.value))}/>
-            <InputStyled type='password' className={isSelectedForm && !isValidPassword ? 'error' : '' } placeholder='Crear constrasena' onChange={(e) => setPassword(e.target.value)}/>
+            <InputStyled type='password' className={isSelectedForm && !isValidPassword() ? 'error' : '' } placeholder='Crear contrasena' onChange={(e) => setPassword(e.target.value)}/>
             <InputStyled type='number' pattern="\d*" maxLength={9} className={isSelectedForm && !isValidPhone() ? 'error' : '' } placeholder='Ingresar celular' onChange={(e) => setPhone(Number(e.target.value))}/>
             <InputStyled type='text' className={isSelectedForm && !isValidEmail() ? 'error' : '' } placeholder='Ingresar email' onChange={(e) => setEmail(e.target.value)}/>
             <InputStyled type='number' pattern="\d*" max={8} placeholder="Codigo de referido" onChange={(e)=> setCodigoReferido(e.target.value)}/>
@@ -150,8 +155,8 @@ const Login = () => {
           : (
           <CardPlantStyled>
             <TitleStyled>Elige tu promo</TitleStyled>
-            <PlanCardInfotStyled>!Aprovecha nuestras ofertas! que incluyen <span>acceso a la APP, plan nutricional, test de evaluación semanal y mensual</span></PlanCardInfotStyled>
-            <PlanCardInfotStyled>Recuerda que <span className="type1">SOLO PAGARÁS EL MONTO DE LA PROMO INDICADO</span> al inicio de cada mes, <span className="type2">NO PAGARÁS TODO DE UNA!!</span> </PlanCardInfotStyled>
+            <PlanCardInfotStyled>!Aprovecha nuestras ofertas! que incluyen <span>acceso a la APP, plan nutricional, 2 clases recuperables al mes, test de evaluación semanal y mensual, participacion en torneos, CUPOS LIMITADOS!!</span></PlanCardInfotStyled>
+            {/* <PlanCardInfotStyled>Recuerda que <span className="type1">SOLO PAGARÁS EL MONTO DE LA PROMO INDICADO</span> al inicio de cada mes, <span className="type2">NO PAGARÁS TODO DE UNA!!</span> </PlanCardInfotStyled>
             <br/>
             { planList.map((item: any) => (
               <PlanCardStyled className={item.name === selectedPlan ? 'selected' : ''} onClick={()=>handleItemSelection(item.name)}>
@@ -172,6 +177,28 @@ const Login = () => {
                   <div>{item.decimalPrice}</div>
                 </PlanCardPricetStyled>
               </PlanCardStyled>
+            ))} */}
+            <PlanCardInfotStyled>Aprovecha nuestros <span className="type1">PLANES DE PRE VENTA</span> por tiempo limitado. <span className="type2">PAGARÁS MUCHO MENOS POR TU CUOTA MENSUAL!!</span> </PlanCardInfotStyled>
+            <br/>
+            { planList.map((item: any) => (
+            <PlanCardStyled className={item.name === selectedPlan ? 'selected' : ''}>
+                <PlanCardItemStyled >{item.name}</PlanCardItemStyled>
+                <PlanCardListStyled>
+                <div className="item">Suscripción</div>
+                <div>{item.suscription}</div>
+                </PlanCardListStyled>
+                <PlanCardListStyled>
+                <div className="item">Incluye</div>
+                {item.free.map((detail: any) => (
+                    <div>{detail.value}</div>
+                ))}
+                </PlanCardListStyled>
+                <PlanCardPricetStyled>
+                <div>S/</div>
+                <div className="principal">{item.price},</div>
+                <div>{item.decimalPrice}</div>
+                </PlanCardPricetStyled>
+            </PlanCardStyled>
             ))}
             <ButtonStyled onClick={() => handleSetCard()}>REGISTRAR</ButtonStyled>
         </CardPlantStyled>)

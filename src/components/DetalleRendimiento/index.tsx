@@ -65,9 +65,6 @@ const DetalleRendimiento = () => {
           ])
         //   const { data } = await Axios.get(
         //     process.env.REACT_APP_API + "/performance/tests?userId="+,
-        //     {
-        //         dni
-        //     }
         //   );
           setLoading(false)
         } catch (error) {

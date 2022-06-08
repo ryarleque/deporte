@@ -149,9 +149,12 @@ export const PlanCardStyled = styled.div`
 export const PlanCardItemStyled = styled.div`
   && {
     font-weight: 800;
+    width: 9rem;
     letter-spacing: 0.5px;
     @media(max-width: 599px) {
       font-size: 1.25rem;
+      width: 100%;
+      text-align: center;
     }
   }
 `;
@@ -159,6 +162,7 @@ export const PlanCardItemStyled = styled.div`
 export const PlanCardListStyled = styled.div`
   && {
     text-align: center;
+    width: 8rem;
     @media(max-width: 599px) {
       margin-top: 0.5rem;
     }

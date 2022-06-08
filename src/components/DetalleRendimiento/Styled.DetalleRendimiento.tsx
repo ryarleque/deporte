@@ -31,6 +31,9 @@ export const CardContentStyled = styled.div`
     margin: 0 auto;
     border-radius: 6px;
     margin-bottom: 2rem;
+    @media(min-width: 600px) {
+      width: 350px;;
+    }
   }
 `;
 
@@ -50,6 +53,9 @@ export const CardImageStyled = styled.img`
     margin: 0 auto;
     text-align: center;
     height: 31rem;
+    @media(min-width: 600px) {
+      width: 350px;;
+    }
   }
 `;
 
@@ -116,6 +122,9 @@ export const UserInfoStyled = styled.img`
     top: 11.5rem;
     position: absolute;
     left: 8.5rem;
+    @media(min-width: 600px) {
+      left: 10.5rem;
+    }
   }
 `;
 
@@ -141,6 +150,6 @@ export const EscudoStyled = styled.img`
     border-radius: 0.5rem;
     top: 15rem;
     position: absolute;
-    left: 3rem;
+    left: 3.2rem;
   }
 `;

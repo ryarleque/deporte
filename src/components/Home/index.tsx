@@ -9,10 +9,15 @@ import Consuelo from '../../Assets/arte_Consuelo.svg';
 
 const Home = () => {
     const navigate = useNavigate();
+    // const planList = [
+    //     {id:0, name: 'PROMO PENSÁ', suscription: '12 meses', free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
+    //     {id:1, name: 'PROMO LAPADULA', suscription: '5 meses', free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
+    //     {id:2, name: 'PROMO CUEVITA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+    //   ];
     const planList = [
-        {id:0, name: 'PROMO PENSÁ', suscription: '12 meses', free: [{value: 'Uniforme'},{value: '1 MES GRATIS'}], price:'219', decimalPrice: '90' },
-        {id:1, name: 'PROMO LAPADULA', suscription: '5 meses', free: [{value: 'Uniforme'}], price:'249', decimalPrice: '90' },
-        {id:2, name: 'PROMO CUEVITA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
+        {id:0, name: 'PROMO PENSÁ', suscription: '6 meses', free: [{value: 'Uniforme'},{value: '1 SEMANA GRATIS'}], price:'199', decimalPrice: '90' },
+        {id:1, name: 'PROMO LAPADULA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'224', decimalPrice: '90' },
+        {id:2, name: 'PROMO CUEVITA', suscription: '1 mes', free: [{value: 'Uniforme 20 Primeros'}], price:'249', decimalPrice: '90' },
       ];
 
       const [selectedPlan] = useState('PROMO PENSÁ')
@@ -77,7 +82,15 @@ const Home = () => {
                             <BeneficiosCardTittleStyled><div>Reportes</div><div>Detallados</div></BeneficiosCardTittleStyled>
                         </BeneficiosCardStyled>
                         <BeneficiosCardStyled>
-                            <BeneficiosCardTittleStyled><div>Asesoria</div><div>Psicologica</div></BeneficiosCardTittleStyled>
+                            <BeneficiosCardTittleStyled><div>Participación</div><div>en Torneos</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                    </BeneficiosCardContainerStyled>
+                    <BeneficiosCardContainerStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Clases</div><div>Recuperables</div></BeneficiosCardTittleStyled>
+                        </BeneficiosCardStyled>
+                        <BeneficiosCardStyled>
+                            <BeneficiosCardTittleStyled><div>Descuento</div><div>por Referidos</div></BeneficiosCardTittleStyled>
                         </BeneficiosCardStyled>
                     </BeneficiosCardContainerStyled>
                 </BeneficiosContentStyled>
@@ -85,17 +98,19 @@ const Home = () => {
 
             <SociosContentStyled>
                 <SociosContentInnerStyled>
-                    <SociosTitleStyled>Socios</SociosTitleStyled>
+                    <SociosTitleStyled>Auspiciadores</SociosTitleStyled>
                     <SociosListStyled>
-                        <SociosStyled src={require("../../Assets/arqui.jfif")} alt="arqui"/>
+                        <SociosStyled src={require("../../Assets/dp.png")} alt="DP"/>
                         <SociosStyled src={require("../../Assets/jogo.jpeg")} alt="JOGO"/>
-                        <SociosStyled src={Consuelo} alt="consuelo"/>
+                        <SociosStyled src={require("../../Assets/arqui.jfif")} alt="arqui"/>
+                        <SociosStyled src={require("../../Assets/abogado1.png")} alt="abogado" style={{padding:'0 2rem'}}/>
+                        <SociosStyled src={require("../../Assets/electrosmog.png")} alt="electrosmog"/>
                     </SociosListStyled>
                 </SociosContentInnerStyled>
             </SociosContentStyled>
 
             <CardHomeContentPlantStyled>
-                <CardHomePlantStyled>
+                {/* <CardHomePlantStyled>
                     <PromoTittleStyled>Promociones</PromoTittleStyled>
                     <PlanCardInfotStyled>Recuerda que <span className="type1">SOLO PAGARÁS EL MONTO DE LA PROMO INDICADO</span> al inicio de cada mes, <span className="type2">NO PAGARÁS TODO DE UNA!!</span> </PlanCardInfotStyled>
                     <br/>
@@ -116,6 +131,31 @@ const Home = () => {
                         <div>S/</div>
                         <div className="principal">{item.price},</div>
                         <div>{item.decimalPrice}</div>
+                        </PlanCardPricetStyled>
+                    </PlanCardStyled>
+                    ))}
+                </CardHomePlantStyled> */}
+                <CardHomePlantStyled>
+                    <PromoTittleStyled>Promociones</PromoTittleStyled>
+                    <PlanCardInfotStyled>Aprovecha nuestros <span className="type1">PLANES DE PRE VENTA</span> por tiempo limitado. <span className="type2">PAGARÁS MUCHO MENOS POR TU CUOTA MENSUAL!!</span> </PlanCardInfotStyled>
+                    <br/>
+                    { planList.map((item: any) => (
+                    <PlanCardStyled className={item.name === selectedPlan ? 'selected' : ''}>
+                        <PlanCardItemStyled >{item.name}</PlanCardItemStyled>
+                        <PlanCardListStyled>
+                            <div className="item">Suscripción</div>
+                            <div>{item.suscription}</div>
+                        </PlanCardListStyled>
+                        <PlanCardListStyled>
+                            <div className="item">Incluye</div>
+                            {item.free.map((detail: any) => (
+                                <div>{detail.value}</div>
+                            ))}
+                        </PlanCardListStyled>
+                        <PlanCardPricetStyled>
+                            <div>S/</div>
+                            <div className="principal">{item.price},</div>
+                            <div>{item.decimalPrice}</div>
                         </PlanCardPricetStyled>
                     </PlanCardStyled>
                     ))}

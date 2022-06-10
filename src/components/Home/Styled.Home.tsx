@@ -339,7 +339,6 @@ export const SociosContentStyled = styled.div`
 
 export const SociosContentInnerStyled = styled.div`    
   && {
-    max-width: 1000px;
     margin: 0 auto;
   }
 `;
@@ -360,6 +359,7 @@ export const SociosListStyled = styled.div`
     flex-direction: column;
     @media(min-width: 600px) {
       flex-direction: row;
+      justify-content: space-evenly;
     }
   }
 `;

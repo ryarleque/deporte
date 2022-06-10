@@ -101,10 +101,14 @@ const Home = () => {
                     <SociosTitleStyled>Auspiciadores</SociosTitleStyled>
                     <SociosListStyled>
                         <SociosStyled src={require("../../Assets/dp.png")} alt="DP"/>
-                        <SociosStyled src={require("../../Assets/jogo.jpeg")} alt="JOGO"/>
-                        <SociosStyled src={require("../../Assets/arqui.jfif")} alt="arqui"/>
-                        <SociosStyled src={require("../../Assets/abogado1.png")} alt="abogado" style={{padding:'0 2rem'}}/>
+                        <SociosStyled src={require("../../Assets/jogo.png")} alt="JOGO"/>
+                        <SociosStyled src={require("../../Assets/arqui.png")} alt="arqui"/>
                         <SociosStyled src={require("../../Assets/electrosmog.png")} alt="electrosmog"/>
+                    </SociosListStyled>
+                    <SociosListStyled>
+                        <SociosStyled src={require("../../Assets/practi-hogar.png")} alt="hogar"/>
+                        <SociosStyled src={require("../../Assets/zk-pharma.png")} alt="zk"/>
+                        <SociosStyled src={require("../../Assets/abogado1.png")} alt="abogado" style={{padding:'0 2rem'}}/>
                     </SociosListStyled>
                 </SociosContentInnerStyled>
             </SociosContentStyled>

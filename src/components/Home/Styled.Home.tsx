@@ -74,7 +74,7 @@ export const ItemHeaderStyled = styled.div`
         color: #f7b643;
     }
     @media(max-width: 900px) {
-      line-height: 3rem;
+      line-height: 2rem;
     }
   }
 `;

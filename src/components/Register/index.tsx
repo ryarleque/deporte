@@ -94,9 +94,9 @@ const Login = () => {
             branchId: getInfoSelectedPlan.id,
             promo: {
               description: getInfoSelectedPlan.description,
-              value: getInfoSelectedPlan.value,
+              value: 200,
               unit: 'S/.',
-              months: getInfoSelectedPlan.months
+              months: 1
             },
             referralCode: codigoReferido
         }

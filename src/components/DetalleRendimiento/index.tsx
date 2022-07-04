@@ -54,7 +54,7 @@ const DetalleRendimiento = () => {
                     <CardContentStyled>
                         <CardTitleStyled>Evaluacion 1</CardTitleStyled>
                         <CardImageStyled src={require("../../Assets/card.png")} alt="logo"/>
-                        <UserPromedioStyled>72</UserPromedioStyled>
+                        <UserPromedioStyled>--</UserPromedioStyled>
                         <UserInfoStyled src={require("../../Assets/user.png")} alt="logo" />
                         <EscudoStyled src={require("../../Assets/logo.jpeg")} alt="logo" />
                         <CardUserNameStyled>{userInfo}</CardUserNameStyled>

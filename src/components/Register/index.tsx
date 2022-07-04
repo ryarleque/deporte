@@ -72,7 +72,7 @@ const Login = () => {
       ...info,
       id:planList3?.id,
       description: planList3?.name,
-      value: Math.round(planBase - Number(planList3?.price + '.' + planList3?.decimalPrice)),
+      value: 200,
       months: planList3?.suscription,
     }
   }

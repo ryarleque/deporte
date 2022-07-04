@@ -131,7 +131,7 @@ const Login = () => {
 
   const handleSetCard = () => {
     //call pasarela de pagos service
-    handleRegister()
+    // handleRegister()
   }
 
   return (

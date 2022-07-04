@@ -94,7 +94,7 @@ const Login = () => {
             branchId: getInfoSelectedPlan.id,
             promo: {
               description: getInfoSelectedPlan.description,
-              value: 200,
+              value: '200',
               unit: 'S/.',
               months: 1
             },

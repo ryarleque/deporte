@@ -6,6 +6,7 @@ import CustomHeader from "../CustomHeader";
 import Spinner from "../Spinner";
 import Cookies from 'js-cookie'
 import { TitleStyled } from "../Rendimiento/Styled.Rendimiento";
+import Axios from "axios";
 
 const DetalleRendimiento = () => {
     const option = [
@@ -16,62 +17,31 @@ const DetalleRendimiento = () => {
     ];
 
     const [isLoading, setLoading] = useState(false)
-    const [userData, setUserData] = useState([{
-        'session': '',
-        'date': '',
-        'distancia': '',
-        'calorias': '',
-    }]);
+    const [userInfo, setUserInfo] = useState('')
+    const token = Cookies.get('userTokenSportLimaCenter')
+
     
     useEffect(()=> {
         const dni = Cookies.get('userDniSportLimaCenter')
-        getUserInfo(dni)
+        getUserInfo(dni as any)
     }, [])
 
-    const getUserInfo = async (dni: any) => {
+    const getUserInfo = async (dni: string) => {
         try {
-          setLoading(true)
-          setUserData([
-            {
-                'session': '1',
-                'date': '30/10/2022',
-                'distancia': '3.6',
-                'calorias': '420',
-            },
-            {
-                'session': '2',
-                'date': '02/11/2022',
-                'distancia': '4.6',
-                'calorias': '320',
-            },
-            {
-                'session': '3',
-                'date': '05/11/2022',
-                'distancia': '5.8',
-                'calorias': '420',
-            },
-            {
-                'session': '4',
-                'date': '10/11/2022',
-                'distancia': '7.1',
-                'calorias': '512',
-            },
-            {
-                'session': '5',
-                'date': '13/11/2022',
-                'distancia': '7.3',
-                'calorias': '579',
-            }
-          ])
-        //   const { data } = await Axios.get(
-        //     process.env.REACT_APP_API + "/performance/tests?userId="+,
-        //   );
-          setLoading(false)
+            const { data } = await Axios.get(
+                process.env.REACT_APP_API + "/users/dni/" + dni , 
+                { 
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+                
+            );
+          setUserInfo(data.fullName)
         } catch (error) {
-          setLoading(false)
           console.log(error)
         }
-      };
+    };
 
     return (
         <>
@@ -87,18 +57,18 @@ const DetalleRendimiento = () => {
                         <UserPromedioStyled>72</UserPromedioStyled>
                         <UserInfoStyled src={require("../../Assets/user.png")} alt="logo" />
                         <EscudoStyled src={require("../../Assets/logo.jpeg")} alt="logo" />
-                        <CardUserNameStyled>Renzo Yarleque</CardUserNameStyled>
+                        <CardUserNameStyled>{userInfo}</CardUserNameStyled>
                         <CardDetailsStyled>
                             <CardDetailLeftStyled>
-                                <CardNumberDetailStyled>91 <CardItemDetailStyled>RIT</CardItemDetailStyled></CardNumberDetailStyled>
-                                <CardNumberDetailStyled>75 <CardItemDetailStyled>TIR</CardItemDetailStyled></CardNumberDetailStyled>
-                                <CardNumberDetailStyled>77 <CardItemDetailStyled>PAS</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>-- <CardItemDetailStyled>RIT</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>-- <CardItemDetailStyled>TIR</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>-- <CardItemDetailStyled>PAS</CardItemDetailStyled></CardNumberDetailStyled>
                             </CardDetailLeftStyled>
 
                             <CardDetailRightStyled>
-                                <CardNumberDetailStyled>86 <CardItemDetailStyled>REG</CardItemDetailStyled></CardNumberDetailStyled>
-                                <CardNumberDetailStyled>46 <CardItemDetailStyled>DEF</CardItemDetailStyled></CardNumberDetailStyled>
-                                <CardNumberDetailStyled>62 <CardItemDetailStyled>FIS</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>-- <CardItemDetailStyled>REG</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>-- <CardItemDetailStyled>DEF</CardItemDetailStyled></CardNumberDetailStyled>
+                                <CardNumberDetailStyled>-- <CardItemDetailStyled>FIS</CardItemDetailStyled></CardNumberDetailStyled>
                             </CardDetailRightStyled>
                         </CardDetailsStyled>
                     </CardContentStyled>

@@ -50,7 +50,7 @@ const CustomHeader = ({isHome = true }) => {
                                 <ItemHeaderStyled onClick={()=> navigate('/')}>HOME</ItemHeaderStyled>
                                 <ItemHeaderStyled>SEDES</ItemHeaderStyled>
                                 <ItemHeaderStyled>TORNEOS</ItemHeaderStyled>
-                                <ItemLastHeaderStyled onClick={()=> window.location.replace("https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion")}>CONTACTO</ItemLastHeaderStyled>
+                                <ItemLastHeaderStyled onClick={()=> window.location.replace("https://api.whatsapp.com/send?phone=51902514688&lang=es&text=informacion")}>CONTACTO</ItemLastHeaderStyled>
                                 <ButtonHeaderStyled onClick={() => navigate("/login")}>INGRESAR</ButtonHeaderStyled>
                                 <Button2HeaderStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderStyled>
                             </WebHeaderStyled>

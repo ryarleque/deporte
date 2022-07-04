@@ -118,9 +118,9 @@ const Login = () => {
   //   {id:3, name: 'PROMO CUEVITA', suscription: 3, free: [{value: 'Uniforme'}], price:'269', decimalPrice: '90' },
   // ];
   const planList = [
-    {id:1, name: 'PROMO PENSÁ', suscription: '6 meses', free: [{value: 'Uniforme'},{value: '1 SEMANA GRATIS'}], price:'199', decimalPrice: '90' },
-    {id:2, name: 'PROMO LAPADULA', suscription: '3 meses', free: [{value: 'Uniforme'}], price:'224', decimalPrice: '90' },
-    {id:3, name: 'PROMO CUEVITA', suscription: '1 mes', free: [{value: 'Uniforme 20 Primeros'}], price:'249', decimalPrice: '90' },
+    {id:1, name: 'PROMO PENSÁ', suscription: 6, free: [{value: 'Uniforme'},{value: '1 SEMANA GRATIS'}], price:'199', decimalPrice: '90' },
+    {id:2, name: 'PROMO LAPADULA', suscription: 3, free: [{value: 'Uniforme'}], price:'224', decimalPrice: '90' },
+    {id:3, name: 'PROMO CUEVITA', suscription: 1, free: [{value: 'Uniforme 20 Primeros'}], price:'249', decimalPrice: '90' },
   ];
 
   const [selectedPlan, setSelectedPlan] = useState('PROMO PENSÁ')
@@ -185,7 +185,7 @@ const Login = () => {
                 <PlanCardItemStyled >{item.name}</PlanCardItemStyled>
                 <PlanCardListStyled>
                 <div className="item">Suscripción</div>
-                <div>{item.suscription}</div>
+                <div>{item.suscription} meses</div>
                 </PlanCardListStyled>
                 <PlanCardListStyled>
                 <div className="item">Incluye</div>
@@ -207,7 +207,7 @@ const Login = () => {
         </CardContainerStyled>
 
         <ContentWhatsappStyled>
-            <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
+            <a href="https://api.whatsapp.com/send?phone=51902514688&lang=es&text=informacion"> <WhatsappContentStyled/></a>
         </ContentWhatsappStyled>
     </ContainerStyled>
   );

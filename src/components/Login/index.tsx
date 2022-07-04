@@ -69,7 +69,7 @@ const Register = () => {
         </CardContainerStyled>
 
         <ContentWhatsappStyled>
-            <a href="https://api.whatsapp.com/send?phone=51983475754&lang=es&text=informacion"> <WhatsappContentStyled/></a>
+            <a href="https://api.whatsapp.com/send?phone=51902514688&lang=es&text=informacion"> <WhatsappContentStyled/></a>
         </ContentWhatsappStyled>
     </ContainerStyled>
   );

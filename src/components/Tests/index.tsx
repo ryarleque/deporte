@@ -169,7 +169,7 @@ const Tests = () => {
                   <TestInnerCustomOptionsStyled>Seleccionar Sede</TestInnerCustomOptionsStyled>
                   <TestSelectStyled name="select" onChange={(e) => setSede(Number(e.target.value as any))}>
                     <option value={1}>Surquillo</option>
-                    <option value={0} >Ate</option>
+                    <option value={2} >Ate</option>
                   </TestSelectStyled>
                 </TestInnerOptionsStyled>
 

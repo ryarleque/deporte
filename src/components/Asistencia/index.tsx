@@ -94,7 +94,7 @@ const Asistencia = () => {
                         <div>Seleccionar Sede</div>
                         <SelectItemContenrStyled name="select" onChange={(e) => setSede(e.target.value as any)}>
                             <option value={1}>Surquillo</option>
-                            <option value={0} >Ate</option>
+                            <option value={2} >Ate</option>
                         </SelectItemContenrStyled>
                     </SeleccionarSedeContenrStyled>  
                     <CustomContainerStyled>

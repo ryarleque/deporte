@@ -44,7 +44,7 @@ const Home = () => {
                 </CarouselStyled>
 
                 <TitleCarouselStyled>
-                    <ButtonHeaderStyled onClick={()=> navigate('/registrar')}>ÚNETE</ButtonHeaderStyled>
+                    <ButtonHeaderStyled onClick={()=> navigate('/login')}>ÚNETE</ButtonHeaderStyled>
                     <PromotionContentColorStyled>
                         <PromotionColorStyled>#</PromotionColorStyled>
                         <span>LIMA</span>

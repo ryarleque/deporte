@@ -21,7 +21,7 @@ function Routing() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/login" element={<Login />}/>
-          <Route path="/registrar" element={<Register />}/>
+          
 
           <Route path="/costos" element={<Costos />} />
           <Route path="/create-user" element={<CreateUser />} />
@@ -30,6 +30,7 @@ function Routing() {
           <Route path="/tomar-asistencia" element={<Asistencia />} />
           <Route path="/tests" element={<Tests />} />
           <Route path="/actualizar-usuario" element={<ActualizarUsuario />} />
+          <Route path="/registrar" element={<Register />}/>
 
           <Route path="/datos" element={<UserInfo />} />
           <Route path="/asistencia" element={<TomarAsistencia />} />

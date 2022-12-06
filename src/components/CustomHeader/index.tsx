@@ -52,7 +52,7 @@ const CustomHeader = ({isHome = true }) => {
                                 <ItemHeaderStyled>TORNEOS</ItemHeaderStyled>
                                 <ItemLastHeaderStyled onClick={()=> window.location.replace("https://api.whatsapp.com/send?phone=51902514688&lang=es&text=informacion")}>CONTACTO</ItemLastHeaderStyled>
                                 <ButtonHeaderStyled onClick={() => navigate("/login")}>INGRESAR</ButtonHeaderStyled>
-                                <Button2HeaderStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderStyled>
+                                {/* <Button2HeaderStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderStyled> */}
                             </WebHeaderStyled>
                             <MobileHeaderStyled>
                                 { !mobileMenuVisible ? (
@@ -64,7 +64,7 @@ const CustomHeader = ({isHome = true }) => {
                                         <ItemHeaderStyled onClick={()=> setMobileMenuVisible(false)}>TORNEOS</ItemHeaderStyled>
                                         <ItemHeaderStyled onClick={()=> setMobileMenuVisible(false)}>CONTACTO</ItemHeaderStyled>
                                         <ButtonHeaderStyled className="yellow-button" onClick={() => navigate("/login")}>INGRESAR</ButtonHeaderStyled>
-                                        <Button2HeaderMobileStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderMobileStyled>
+                                        {/* <Button2HeaderMobileStyled onClick={() => navigate("/registrar")}>REGISTRAR</Button2HeaderMobileStyled> */}
                                     </MobileContentHeaderStyled>
                                 )}
                             </MobileHeaderStyled>

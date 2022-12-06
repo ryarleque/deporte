@@ -11,6 +11,7 @@ const Tests = () => {
     const option = [
         { name: "Asitencia", route:"/tomar-asistencia", image: <PersonCheckFill/> },
         { name: "Test", route:"/tests", image: <Clipboard2CheckFill/>},
+        { name: "ActualizarUsuario", route:"/actualizar-usuario", image: <PersonCheckFill/> },
     ];
 
     const [isLoading, setLoading] = useState(false)
@@ -189,7 +190,7 @@ const Tests = () => {
               <TestInnerOptionsStyled>
                   <div>Seleccionar Alumno</div>
                   <TestSelectStyled name="select" onChange={(e) => setAlumno(Number(e.target.value as any))}>
-                      { alumnoList.map((item: any) => (
+                      { alumnoList.map((item: any, org) => (
                         <option key={item.id} value={item.id}>{item.fullName}</option>
                       ))}
                   </TestSelectStyled>

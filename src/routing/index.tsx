@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ActualizarUsuario from "../components/ActualizarUsuario";
 import Asistencia from "../components/Asistencia";
 import Costos from "../components/Costos";
 import CreateUser from "../components/CreateUser";
@@ -28,6 +29,7 @@ function Routing() {
 
           <Route path="/tomar-asistencia" element={<Asistencia />} />
           <Route path="/tests" element={<Tests />} />
+          <Route path="/actualizar-usuario" element={<ActualizarUsuario />} />
 
           <Route path="/datos" element={<UserInfo />} />
           <Route path="/asistencia" element={<TomarAsistencia />} />

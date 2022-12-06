@@ -11,6 +11,7 @@ const Asistencia = () => {
     const option = [
         { name: "Asitencia", route:"/tomar-asistencia", image: <PersonCheckFill/> },
         { name: "Test", route:"/tests", image: <Clipboard2CheckFill/>},
+        { name: "ActualizarUsuario", route:"/actualizar-usuario", image: <PersonCheckFill/> },
     ];
 
     const [isLoading, setLoading] = useState(false)
@@ -50,15 +51,21 @@ const Asistencia = () => {
 
     const [kilometros, setKilometros] = useState(0)
     const [calorias, setCalorias] = useState(0)
+    const [localDate, setLocalDate] = useState('')
 
-    const saveAsistencia = async (item:any, km: number, calories:number) => {
+    const saveAsistencia = async (item:any, km: number, calories:number, date: string) => {
         try {
             setLoading(true)
             const { data } = await Axios.post(
               process.env.REACT_APP_API + "/attendance",
               {
                  attendances: [
-                      { userId: item.id , km, calories }
+                    { 
+                        userId: item.id,
+                        km,
+                        calories,
+                        date
+                    }
                   ]
               },
               {
@@ -70,11 +77,11 @@ const Asistencia = () => {
             setLoading(false)
             cleanVariables()
             console.log(data)
-          } catch (error) {
-              cleanVariables()
-              setLoading(false)
-              console.log(error)
-          }
+        } catch (error) {
+            cleanVariables()
+            setLoading(false)
+            console.log(error)
+        }
     }
 
     const cleanVariables = () => {
@@ -107,7 +114,8 @@ const Asistencia = () => {
                                 <div>
                                     <div><CardSectitonBottomStyled type='number' placeholder="Ingresar kilometros" onChange={(e)=> setKilometros(Number(e.target.value))}/></div>
                                     <div><CardSectitonBottomStyled type='number' placeholder="Ingresar calorias" onChange={(e)=> setCalorias(Number(e.target.value))}/></div>
-                                    <Button2HeaderStyled onClick={() => saveAsistencia(item, kilometros, calorias)}>GUARDAR</Button2HeaderStyled>
+                                    <div><CardSectitonBottomStyled type='text' placeholder="Fecha YYYY-MM-DD" onChange={(e)=> setLocalDate((e.target.value))}/></div>
+                                    <Button2HeaderStyled onClick={() => saveAsistencia(item, kilometros, calorias, localDate)}>GUARDAR</Button2HeaderStyled>
                                 </div>
                             </CardStyled>
                         ))}

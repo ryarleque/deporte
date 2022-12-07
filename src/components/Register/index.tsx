@@ -6,6 +6,7 @@ import CustomHeader from "../CustomHeader";
 import { ContentWhatsappStyled, WhatsappContentStyled } from "../CustomFooter/Styled.CustomFooter";
 import Spinner from "../Spinner/index";
 import { useNavigate } from "react-router-dom";
+import { SeleccionarSedeContenrStyled, SelectItemContenrStyled } from "../ActualizarUsuario/Styled.ActualizarUsuario";
 
 const Login = () => {
 
@@ -22,6 +23,7 @@ const Login = () => {
   const planBase = 300
   const [isLoading, setLoading] = useState(false)
   const navigate = useNavigate();
+  const [sedeUserId, setUserSedeId] = useState(1)
 
   const handleNextStepRegister = () => {
     setSelectedForm(true)
@@ -91,7 +93,7 @@ const Login = () => {
             phone: String(phone),
             password,
             email,
-            branchId: getInfoSelectedPlan.id,
+            branchId: sedeUserId,
             promo: {
               description: getInfoSelectedPlan.description,
               value: '0',
@@ -178,6 +180,13 @@ const Login = () => {
                 </PlanCardPricetStyled>
               </PlanCardStyled>
             ))} */}
+            <SeleccionarSedeContenrStyled>
+                <div>Seleccionar Sede</div>
+                <SelectItemContenrStyled name="select" onChange={(e) => setUserSedeId(Number(e.target.value as any))}>
+                    <option value={1}>Surquillo</option>
+                    <option value={2} >Ate</option>
+                </SelectItemContenrStyled>
+            </SeleccionarSedeContenrStyled>  
             <PlanCardInfotStyled>Aprovecha nuestros <span className="type1">PLANES DE PRE VENTA</span> por tiempo limitado. <span className="type2">PAGARÁS MUCHO MENOS POR TU CUOTA MENSUAL!!</span> </PlanCardInfotStyled>
             <br/>
             { planList.map((item: any) => (

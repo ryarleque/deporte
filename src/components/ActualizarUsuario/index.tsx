@@ -21,13 +21,13 @@ const ActualizarUsuario = () => {
     const [localDate, setLocalDate] = useState('')
     const [isSuccess, setSuccess] = useState(false)
 
-    const updateUser = async (dni:string, date: string) => {
+    const updateUser = async (dni:string, localDate: string) => {
         try {
             setLoading(true)
             const { data } = await Axios.patch(
               process.env.REACT_APP_API + "/users/" + dni,
               {
-                date    
+                date: localDate 
               },
               {
               headers: {
